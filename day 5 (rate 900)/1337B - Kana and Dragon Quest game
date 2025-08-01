@@ -1,0 +1,7 @@
+for _ in range(int(input())):
+    h, n, m = map(int, input().split())
+    while n and h > 20:
+        h = h // 2 + 10
+        n -= 1
+    h -= m * 10
+    print("YES" if h <= 0 else "NO")
