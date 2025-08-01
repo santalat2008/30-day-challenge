@@ -1,0 +1,8 @@
+n = int(input())
+a = list(map(int, input().split()))
+for i in range(n):
+    mn = abs(a[i] - a[i - 1]) if i > 0 else abs(a[1] - a[0])
+    mx = max(abs(a[i] - a[0]), abs(a[i] - a[-1]))
+    if i < n - 1:
+        mn = min(mn, abs(a[i + 1] - a[i]))
+    print(mn, mx)
