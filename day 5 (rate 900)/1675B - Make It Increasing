@@ -1,0 +1,13 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    c = 0
+    ok = True
+    for i in range(n - 2, -1, -1):
+        while a[i] >= a[i + 1] and a[i] > 0:
+            a[i] //= 2
+            c += 1
+        if a[i] >= a[i + 1]:
+            ok = False
+            break
+    print(c if ok else -1)
