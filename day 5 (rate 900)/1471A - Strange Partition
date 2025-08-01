@@ -1,0 +1,5 @@
+for _ in range(int(input())):
+    n, x = map(int,input().split())
+    a = list(map(int,input().split()))
+    mn = sum((i + x - 1)//x for i in a)
+    print((sum(a)+x-1)//x, mn)
