@@ -1,0 +1,12 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    d = [0] * 26
+    r = ''
+    for x in a:
+        for i in range(26):
+            if d[i] == x:
+                r += chr(i + 97)
+                d[i] += 1
+                break
+    print(r)
