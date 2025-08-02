@@ -1,0 +1,10 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    L, R = 0, 55
+    for _ in range(n):
+        l, r = map(int, input().split())
+        if l <= k <= r:
+            L = max(L, l)
+            R = min(R, r)
+    print("YES" if L == R else "NO")
