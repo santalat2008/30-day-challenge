@@ -1,0 +1,18 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = list(input())
+    for i in range(n):
+        if s[i] == '?':
+            l = r = i
+            while r < n and s[r] == '?':
+                r += 1
+            for j in range(l, r):
+                if l > 0 and s[l-1] != '?':
+                    s[j] = 'B' if s[l-1] == 'R' else 'R'
+                    l += 1
+                elif r < n:
+                    s[j] = 'B' if s[r] == 'R' else 'R'
+                else:
+                    s[j] = 'B'
+    print(''.join(s))
