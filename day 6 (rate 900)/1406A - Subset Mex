@@ -1,0 +1,10 @@
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    c=[0]*102
+    for x in a: c[x]+=1
+    ma=mb=0
+    while c[ma]: ma+=1
+    while c[mb]>1: mb+=1
+    print(ma+mb)
