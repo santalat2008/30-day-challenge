@@ -1,0 +1,8 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    if '11' in s:
+        print("NO")
+    else:
+        print("YES")
