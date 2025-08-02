@@ -1,0 +1,17 @@
+def main():
+    t = int(input())
+    for _ in range(t):
+        n, m, k = map(int, input().split())
+        a = []
+        for i in range(n):
+            x = i + 1
+            val = (x if x >= k else 0) - (x if x <= m else 0)
+            a.append(val)
+
+        order = list(range(n))
+        order.sort(key=lambda i: -a[i])
+
+        print(' '.join(str(i + 1) for i in order))
+
+if __name__ == "__main__":
+    main()
