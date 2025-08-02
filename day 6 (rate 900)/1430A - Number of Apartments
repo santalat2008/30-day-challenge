@@ -1,0 +1,15 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    ok = 0
+    for x in range(n // 3 + 1):
+        for y in range((n - 3 * x) // 5 + 1):
+            z = n - 3 * x - 5 * y
+            if z >= 0 and z % 7 == 0:
+                print(x, y, z // 7)
+                ok = 1
+                break
+        if ok:
+            break
+    if not ok:
+        print(-1)
