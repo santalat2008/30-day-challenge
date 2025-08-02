@@ -1,0 +1,26 @@
+def is_vowel(c):
+    return c in 'ae'
+
+def solve():
+    n = int(input())
+    s = input()
+    final = []
+    ptr = n - 1
+
+    def Do(amount):
+        nonlocal ptr
+        for _ in range(amount):
+            final.append(s[ptr])
+            ptr -= 1
+        final.append('.')
+
+    while ptr >= 0:
+        vowel = is_vowel(s[ptr])
+        Do(3 - vowel)
+
+    final.pop()  
+    print(''.join(reversed(final)))
+
+t = int(input())
+for _ in range(t):
+    solve()
