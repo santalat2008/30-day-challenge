@@ -1,0 +1,9 @@
+n = int(input())
+a = list(map(int, input().split()))
+
+s = sum(a)
+if s % 2 == 0:
+    print(s)
+else:
+    men = min(x for x in a if x % 2 == 1)
+    print(s - men)
