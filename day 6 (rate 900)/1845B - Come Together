@@ -1,0 +1,6 @@
+t=int(input())
+for _ in range(t):
+    xa,ya=map(int,input().split())
+    xb,yb=map(int,input().split())
+    xc,yc=map(int,input().split())
+    print(1+min(abs(xb-xa),abs(xc-xa))+min(abs(yb-ya),abs(yc-ya)))
