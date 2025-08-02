@@ -1,0 +1,12 @@
+t = int(input())
+input()
+for _ in range(t):
+    g = [input() for _ in range(8)]
+    if _ != t-1: input()
+    if any(r == 'R'*8 for r in g):
+        print("R")
+    else:
+        for c in range(8):
+            if all(g[r][c] == 'B' for r in range(8)):
+                print("B")
+                break
