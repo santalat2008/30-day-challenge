@@ -1,0 +1,14 @@
+n=int(input())
+a=[]
+r=False
+for _ in range(n):
+    x,y=map(int,input().split())
+    if x!=y:
+        r=True
+    a.append(x)
+if r:
+    print("rated")
+elif any(a[i]<a[i+1] for i in range(n-1)):
+    print("unrated")
+else:
+    print("maybe")
