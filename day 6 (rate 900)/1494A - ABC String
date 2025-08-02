@@ -1,0 +1,19 @@
+def valid(s):
+    bal = 0
+    for c in s:
+        bal += 1 if c == '(' else -1
+        if bal < 0:
+            return False
+    return bal == 0
+
+t = int(input())
+for _ in range(t):
+    s = input()
+    res = "NO"
+    for p in [(x,y,z) for x in '()' for y in '()' for z in '()']:
+        m = {'A': p[0], 'B': p[1], 'C': p[2]}
+        b = ''.join(m[c] for c in s)
+        if valid(b):
+            res = "YES"
+            break
+    print(res)
