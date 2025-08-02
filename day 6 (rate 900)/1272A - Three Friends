@@ -1,0 +1,13 @@
+q = int(input())
+for _ in range(q):
+    a, b, c = map(int, input().split())
+    res = float('inf')
+    for da in [-1, 0, 1]:
+        for db in [-1, 0, 1]:
+            for dc in [-1, 0, 1]:
+                x = a + da
+                y = b + db
+                z = c + dc
+                d = abs(x - y) + abs(x - z) + abs(y - z)
+                res = min(res, d)
+    print(res)
