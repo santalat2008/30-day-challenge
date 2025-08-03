@@ -1,0 +1,10 @@
+from collections import defaultdict
+
+n = int(input())
+score = defaultdict(int)
+
+for _ in range(n):
+    team = input()
+    score[team] += 1
+winner = max(score.items(), key=lambda x: x[1])[0]
+print(winner)
