@@ -1,0 +1,19 @@
+t = int(input())
+for _ in range(t):
+    n,m = map(int, input().split())
+    a = [list(map(int, input().split())) for __ in range(n)]
+
+    d1 = {}
+    d2 = {}
+    for i in range(n):
+        for j in range(m):
+            d1[i-j] = d1.get(i-j, 0) + a[i][j]
+            d2[i+j] = d2.get(i+j, 0) + a[i][j]
+
+    ans = 0
+    for i in range(n):
+        for j in range(m):
+            s = d1[i-j] + d2[i+j] - a[i][j]
+            if s > ans:
+                ans = s
+    print(ans)
