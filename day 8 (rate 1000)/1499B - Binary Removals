@@ -1,0 +1,12 @@
+t = int(input())
+for _ in range(t):
+    s = input()
+    f = False
+    ok = True
+    for c in s:
+        if c == '1':
+            f = True
+        if f and c == '0':
+            ok = False
+            break
+    print("YES" if ok else "NO")
