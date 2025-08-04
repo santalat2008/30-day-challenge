@@ -1,0 +1,3 @@
+s = input()
+d = sum(s[i] != s[-1-i] for i in range(len(s)//2))
+print("YES" if d == 1 or (d == 0 and len(s) > 1) else "NO")
