@@ -1,0 +1,17 @@
+from collections import deque
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+    
+    dq = deque()
+    dq.append(p[0])
+    
+    for x in p[1:]:
+        if x < dq[0]:
+            dq.appendleft(x)
+        else:
+            dq.append(x)
+    
+    print(*dq)
