@@ -1,0 +1,17 @@
+t = int(input())
+for _ in range(t):
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    l = a[0] - x
+    r = a[0] + x
+    changes = 0
+    for i in range(1, n):
+        nl = a[i] - x
+        nr = a[i] + x
+        l = max(l, nl)
+        r = min(r, nr)
+        if l > r:  
+            changes += 1
+            l = nl
+            r = nr
+    print(changes)
