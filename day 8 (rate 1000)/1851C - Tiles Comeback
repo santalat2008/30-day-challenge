@@ -1,0 +1,28 @@
+def solve(tests):
+    ans = []
+    for n, k, c in tests:
+        a, b = c[0], c[-1]
+        ac = bc = 0
+        ai = bi = -1
+
+        for i in range(n):
+            if c[i] == a:
+                ac += 1
+                if ac == k:
+                    ai = i
+                    break
+
+        if a == b:
+            ans.append("YES" if ac >= k else "NO")
+        else:
+            for i in range(n - 1, -1, -1):
+                if c[i] == b:
+                    bc += 1
+                    if bc == k:
+                        bi = i
+                        break
+            if ac >= k and bc >= k and ai < bi:
+                ans.append("YES")
+            else:
+                ans.append("NO")
+    return ans
