@@ -1,0 +1,8 @@
+t = int(input())
+for _ in range(t):
+    n, x1, y1, x2, y2 = map(int, input().split())
+
+    def l(x, y):
+        return min(x, y, n - x + 1, n - y + 1)
+
+    print(abs(l(x1, y1) - l(x2, y2)))
