@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    k, n = map(int, input().split())
+    res = []
+    curr = 1
+    diff = 1
+    for i in range(k):
+        res.append(curr)
+        if (n - curr - diff) >= (k - len(res) - 1):
+            curr += diff
+            diff += 1
+        else:
+            curr += 1
+    print(*res)
