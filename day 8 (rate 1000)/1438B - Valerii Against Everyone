@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    b = list(map(int, input().split()))
+    
+    seen = set()
+    found = False
+    for x in b:
+        if x in seen:
+            found = True
+            break
+        seen.add(x)
+    
+    print("YES" if found else "NO")
