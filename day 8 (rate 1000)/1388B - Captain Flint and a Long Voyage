@@ -1,0 +1,5 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    k = n // 4
+    print('8' * k + '9' * (n - k))
