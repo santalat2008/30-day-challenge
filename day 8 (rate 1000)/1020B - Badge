@@ -1,0 +1,10 @@
+n = int(input())
+p = list(map(int, input().split()))
+
+for start in range(n):
+    visited = set()
+    curr = start
+    while curr not in visited:
+        visited.add(curr)
+        curr = p[curr] - 1  
+    print(curr + 1, end=' ')
