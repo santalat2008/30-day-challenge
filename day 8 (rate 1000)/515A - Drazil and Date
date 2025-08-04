@@ -1,0 +1,3 @@
+x, y, s = map(int, input().split())
+d = abs(x) + abs(y)
+print("Yes" if s >= d and (s - d) % 2 == 0 else "No")
