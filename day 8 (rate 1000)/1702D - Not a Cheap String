@@ -1,0 +1,27 @@
+from collections import Counter as C
+
+def val(c): return ord(c) - 96
+
+def solve():
+    for _ in range(int(input())):
+        s = input()
+        p = int(input())
+        tot = sum(val(ch) for ch in s)
+        cnt = C(s)
+
+        if tot <= p:
+            print(s)
+            continue
+
+        for i in range(25, -1, -1):
+            ch = chr(97 + i)
+            while cnt[ch] and tot > p:
+                tot -= i + 1
+                cnt[ch] -= 1
+
+        res = []
+        for ch in s:
+            if cnt[ch]:
+                res.append(ch)
+                cnt[ch] -= 1
+        print(''.join(res))
