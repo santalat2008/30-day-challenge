@@ -1,0 +1,6 @@
+t = int(input())
+for _ in range(t):
+    s = input()
+    i = s.find('1')
+    j = s.rfind('0')
+    print(0 if i == -1 or j == -1 or i > j else j - i + 1)
