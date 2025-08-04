@@ -1,0 +1,19 @@
+n = int(input())
+pts = [tuple(map(int, input().split())) for _ in range(n)]
+cnt = 0
+
+for x, y in pts:
+    l = r = u = d = False
+    for xx, yy in pts:
+        if xx < x and yy == y:
+            l = True
+        if xx > x and yy == y:
+            r = True
+        if xx == x and yy > y:
+            u = True
+        if xx == x and yy < y:
+            d = True
+    if l and r and u and d:
+        cnt += 1
+
+print(cnt)
