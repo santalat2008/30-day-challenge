@@ -1,0 +1,33 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    fixed_x = -1
+    x_valid = True
+    min_x = 0
+    max_x = 10**18
+    for i in range(n):
+        if b[i] != -1:
+            if fixed_x == -1:
+                fixed_x = a[i] + b[i]
+            elif fixed_x != a[i] + b[i]:
+                x_valid = False
+                break
+    if not x_valid:
+        print(0)
+        continue
+    for i in range(n):
+        if b[i] == -1:
+            min_x = max(min_x, a[i])
+            max_x = min(max_x, a[i] + k)
+    if fixed_x != -1:
+        if min_x <= fixed_x <= max_x:
+            print(1)
+        else:
+            print(0)
+    else:
+        if max_x < min_x:
+            print(0)
+        else:
+            print(max_x - min_x + 1)
