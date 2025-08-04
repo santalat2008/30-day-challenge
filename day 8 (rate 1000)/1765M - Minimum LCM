@@ -1,0 +1,11 @@
+import math
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    for d in range(2, int(n ** 0.5) + 1):
+        if n % d == 0:
+            print(n - d, d)
+            break
+    else:
+        print(1, n - 1)
