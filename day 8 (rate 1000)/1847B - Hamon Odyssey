@@ -1,0 +1,17 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    g = a[0]
+    for x in a[1:]:
+        g &= x
+
+    c = 0
+    x = ~0
+    for y in a:
+        x &= y
+        if x == g:
+            c += 1
+            x = ~0
+    print(c)
