@@ -1,0 +1,14 @@
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+b = a[:]
+ans = 0
+
+for i in range(n - 1):
+    s = b[i] + b[i + 1]
+    if s < k:
+        add = k - s
+        b[i + 1] += add
+        ans += add
+
+print(ans)
+print(*b)
