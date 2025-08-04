@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    coins = 0
+    balance = 0
+
+    for x in a:
+        balance += x
+        if balance < 0:
+            coins += -balance
+            balance = 0
+    print(coins)
