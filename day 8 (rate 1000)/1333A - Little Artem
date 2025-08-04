@@ -1,0 +1,11 @@
+def s():
+    n, m = map(int, input().split())
+    row = 'B' * m
+    g = [row for _ in range(n)]
+    g[0] = 'W' + g[0][1:]
+    for r in g:
+        print(r)
+
+t = int(input())
+for _ in range(t):
+    s()
