@@ -1,0 +1,4 @@
+t=int(input())
+for _ in range(t):
+    a=input();b=input()
+    print("YES" if ('0'in a and'1'in a and'0'in b and'1'in b)or(('0'in a)==('0'in b))else "NO")
