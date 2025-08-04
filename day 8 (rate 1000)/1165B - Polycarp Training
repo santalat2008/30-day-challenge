@@ -1,0 +1,7 @@
+n = int(input())
+a = sorted(map(int, input().split()))
+d = 1
+for x in a:
+    if x >= d:
+        d += 1
+print(d - 1)
