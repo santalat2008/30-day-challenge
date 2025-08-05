@@ -1,0 +1,17 @@
+t = int(input())
+for _ in range(t):
+    s, d = input().split()
+    h, m = map(int, s.split(':'))
+    d = int(d)
+    seen = set()
+    cnt = 0
+    while (h, m) not in seen:
+        seen.add((h, m))
+        t_str = f"{h:02}:{m:02}"
+        if t_str == t_str[::-1]:
+            cnt += 1
+        m += d
+        h += m // 60
+        m %= 60
+        h %= 24
+    print(cnt)
