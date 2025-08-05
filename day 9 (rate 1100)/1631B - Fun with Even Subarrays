@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    x = a[-1]
+    c = 0
+    i = n - 1
+    while i >= 0:
+        if a[i] != x:
+            c += 1
+            i = n - 2 * (n - i)
+        else:
+            i -= 1
+    print(c)
