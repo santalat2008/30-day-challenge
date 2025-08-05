@@ -1,0 +1,6 @@
+t = int(input())
+for _ in range(t):
+    a, b, c = map(int, input().split())
+    s = a + b + c
+    m = max(a, b, c)
+    print("YES" if s % 9 == 0 and s // 9 <= min(a, b, c) else "NO")
