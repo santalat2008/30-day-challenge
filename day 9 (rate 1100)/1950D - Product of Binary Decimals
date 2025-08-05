@@ -1,0 +1,16 @@
+t = int(input())
+for _ in range(t):
+    x = int(input())
+    q = [1]
+    i = 0
+    while True:
+        v = q[i]
+        i += 1
+        if v > x: continue
+        if v == x:
+            print("YES")
+            break
+        q.append(v * 10)
+        q.append(v * 10 + 1)
+    else:
+        print("NO")
