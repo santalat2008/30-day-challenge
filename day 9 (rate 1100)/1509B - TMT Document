@@ -1,0 +1,17 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    if s.count('T') != 2 * s.count('M'):
+        print("NO")
+        continue
+    c = 0
+    ok = True
+    for x in s:
+        c += 1 if x == 'T' else -1
+        if c < 0: ok = False
+    c = 0
+    for x in s[::-1]:
+        c += 1 if x == 'T' else -1
+        if c < 0: ok = False
+    print("YES" if ok else "NO")
