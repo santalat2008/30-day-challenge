@@ -1,0 +1,23 @@
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    s=input()
+    val=0
+    diffs=[]
+    for i,c in enumerate(s):
+        if c=='L':
+            val+=i
+            d=(n-1 - i) - i
+        else:
+            val+=n-1 - i
+            d=i - (n-1 - i)
+        if d>0:
+            diffs.append(d)
+    diffs.sort(reverse=True)
+    res=[val]
+    for i in range(len(diffs)):
+        val+=diffs[i]
+        res.append(val)
+    while len(res)<n+1:
+        res.append(res[-1])
+    print(*res[1:])
