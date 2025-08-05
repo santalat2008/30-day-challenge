@@ -1,0 +1,8 @@
+t = int(input())
+for _ in range(t):
+    s = input()
+    if all(x == s[0] for x in s):
+        print(s)
+    else:
+        print('01' * len(s))
+
