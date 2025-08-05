@@ -1,0 +1,12 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    c = 0
+    while n >= 2:
+        h = 1
+        while (3 * h * h + h) // 2 <= n:
+            h += 1
+        h -= 1
+        n -= (3 * h * h + h) // 2
+        c += 1
+    print(c)
