@@ -1,0 +1,18 @@
+from math import gcd
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    pos = [0]*1001
+    for i, x in enumerate(a, 1):
+        pos[x] = max(pos[x], i)
+    ans = -1
+    for i in range(1, 1001):
+        if pos[i] == 0:
+            continue
+        for j in range(1, 1001):
+            if pos[j] == 0:
+                continue
+            if gcd(i, j) == 1:
+                ans = max(ans, pos[i] + pos[j])
+    print(ans)
