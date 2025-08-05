@@ -1,0 +1,12 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    vis = [0] * (n + 1)
+    for x in a:
+        while x:
+            if x <= n and not vis[x]:
+                vis[x] = 1
+                break
+            x //= 2
+    print("YES" if all(vis[1:]) else "NO")
