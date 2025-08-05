@@ -1,0 +1,4 @@
+n = int(input())
+a = list(map(int, input().split()))
+m = max(a.count(x) for x in a)
+print("NO" if m > (n + 1) // 2 else "YES")
