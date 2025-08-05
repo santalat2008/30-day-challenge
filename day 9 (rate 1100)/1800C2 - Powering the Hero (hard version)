@@ -1,0 +1,14 @@
+import heapq
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    h = []
+    s = 0
+    for x in a:
+        if x == 0:
+            if h:
+                s -= heapq.heappop(h)
+        else:
+            heapq.heappush(h, -x)
+    print(s)
