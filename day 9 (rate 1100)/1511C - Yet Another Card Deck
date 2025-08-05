@@ -1,0 +1,16 @@
+t = int(input())
+for _ in range(t):
+    n, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    p = {}
+    for i, x in enumerate(a):
+        if x not in p:
+            p[x] = i + 1
+    b = list(map(int, input().split()))
+    for x in b:
+        print(p[x], end=' ')
+        for k in p:
+            if p[k] < p[x]:
+                p[k] += 1
+        p[x] = 1
+    print()
