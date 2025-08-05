@@ -1,0 +1,7 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = sorted(a)
+    res = sum(b[i] - min(b[:i+1]) for i in range(n))
+    print(res)
