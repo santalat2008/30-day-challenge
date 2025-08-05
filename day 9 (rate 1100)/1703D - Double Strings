@@ -1,0 +1,17 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    arr = [input().strip() for __ in range(n)]
+    st = set(arr)
+    res = []
+    for s in arr:
+        flag = 0
+        for i in range(1, len(s)):
+            if s[:i] in st and s[i:] in st:
+                flag = 1
+                break
+        res.append(str(flag))
+    print(''.join(res))
