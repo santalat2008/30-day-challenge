@@ -1,0 +1,12 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    a.sort()
+    s = [0]
+    for x in a:
+        s.append(s[-1] + x)
+    res = 0
+    for i in range(k + 1):
+        res = max(res, s[n] - s[2 * i] - (s[n] - s[n - (k - i)]))
+    print(res)
