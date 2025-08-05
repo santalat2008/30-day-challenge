@@ -1,0 +1,5 @@
+n = input()
+def f(x):
+    if not x: return 0
+    return (1 << len(x)) - 1 + (x[0] == '7') * (1 << (len(x) - 1)) + f(x[1:]) if x[0] in '47' else 0
+print(f(n))
