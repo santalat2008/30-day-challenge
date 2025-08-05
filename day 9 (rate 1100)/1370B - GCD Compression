@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    n = int(input()) * 2
+    a = list(map(int, input().split()))
+    e, o = [], []
+    for i in range(n):
+        (e if a[i] % 2 == 0 else o).append(i + 1)
+    r = []
+    for x in (e, o):
+        for i in range(0, len(x) - 1, 2):
+            if len(r) < n - 2:
+                r.append((x[i], x[i + 1]))
+    for x in r:
+        print(*x)
