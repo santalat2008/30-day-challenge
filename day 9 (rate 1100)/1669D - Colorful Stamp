@@ -1,0 +1,22 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+    
+    i = 0
+    valid = True
+    while i < n:
+        if s[i] == 'W':
+            i += 1
+            continue
+        j = i
+        while j < n and s[j] != 'W':
+            j += 1
+        segment = s[i:j]
+        if 'R' in segment and 'B' in segment:
+            pass  # OK
+        elif 'R' in segment or 'B' in segment:
+            valid = False
+            break
+        i = j
+    print("YES" if valid else "NO")
