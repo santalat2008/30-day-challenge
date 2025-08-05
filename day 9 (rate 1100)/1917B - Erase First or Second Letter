@@ -1,0 +1,8 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input()
+    st = set()
+    for i in range(n - 1):
+        st.add((s[i], s[i + 1]))
+    print(len(st) + 1)
