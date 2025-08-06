@@ -1,0 +1,10 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    m = [list(map(int, input().split())) for _ in range(n)]
+    c = 0
+    for i in range(n):
+        for j in range(n):
+            if m[i][j] != m[n-1-i][n-1-j]:
+                c += 1
+    c //= 2
+    print("YES" if c <= k and (k - c) % 2 == 0 or n % 2 else "NO")
