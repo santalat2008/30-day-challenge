@@ -1,0 +1,22 @@
+n, m = map(int, input().split())
+a = [input() for _ in range(n)]
+used = [False] * n
+lft, mid = [], ""
+
+for i in range(n):
+    if used[i]:
+        continue
+    for j in range(i+1, n):
+        if not used[j] and a[i] == a[j][::-1]:
+            used[i] = used[j] = True
+            lft.append(a[i])
+            break
+
+for i in range(n):
+    if not used[i] and a[i] == a[i][::-1]:
+        mid = a[i]
+        break
+
+res = ''.join(lft) + mid + ''.join(x[::-1] for x in reversed(lft))
+print(len(res))
+print(res)
