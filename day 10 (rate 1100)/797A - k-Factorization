@@ -1,0 +1,18 @@
+n, k = map(int, input().split())
+f = []
+i = 2
+while i * i <= n and len(f) < k:
+    while n % i == 0:
+        f.append(i)
+        n //= i
+        if len(f) == k: break
+    i += 1
+if len(f) < k and n > 1:
+    f.append(n)
+if len(f) < k:
+    print(-1)
+else:
+    while len(f) > k:
+        f[-2] *= f[-1]
+        f.pop()
+    print(*f)
