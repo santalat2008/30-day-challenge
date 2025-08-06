@@ -1,0 +1,20 @@
+def main():
+    tt = int(input())
+    for _ in range(tt):
+        n = int(input())
+        a = list(map(int, input().split()))
+        ans = int(1e18)
+        beg = 0
+        while beg < n:
+            end = beg
+            while end + 1 < n and a[end + 1] == a[end]:
+                end += 1
+            length = end - beg + 1
+            cur = (n - length) * a[beg]
+            ans = min(ans, cur)
+            beg = end + 1
+        print(ans)
+
+if __name__ == "__main__":
+    main()
+ 
