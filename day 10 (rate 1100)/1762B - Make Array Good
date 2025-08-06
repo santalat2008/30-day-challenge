@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    m = min(a)
+    res = []
+    for i in range(n):
+        if a[i] % m != 0:
+            x = m - (a[i] % m)
+            res.append((i + 1, x))
+            a[i] += x
+    print(len(res))
+    for i, x in res:
+        print(i, x)
