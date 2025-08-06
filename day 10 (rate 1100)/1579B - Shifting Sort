@@ -1,0 +1,15 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    ops = []
+    for i in range(n):
+        m = min(a[i:])
+        j = a.index(m, i)
+        if j != i:
+            d = j - i
+            ops.append((i+1, j+1, d))
+            a[i:j+1] = a[j:j+1] + a[i:j]
+    print(len(ops))
+    for l, r, d in ops:
+        print(l, r, d)
