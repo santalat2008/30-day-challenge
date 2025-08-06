@@ -1,0 +1,14 @@
+q = int(input())
+mp = {}
+rev = {}
+
+for _ in range(q):
+    o, n = input().split()
+    if o in rev:
+        o = rev[o]
+    mp[o] = n
+    rev[n] = o
+
+print(len(mp))
+for k, v in mp.items():
+    print(k, v)
