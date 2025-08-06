@@ -1,0 +1,14 @@
+for _ in range(int(input())):
+    s = input()
+    a = [0] * 10
+    for x in s:
+        a[int(x)] += 1
+    ok = 0
+    for i in range(1, 10):
+        if len(s) % i == 0:
+            need = len(s) // i
+            cnt = sum(min(x, need) for x in a)
+            if cnt >= i * need:
+                ok = 1
+                break
+    print("YES" if ok else "NO")
