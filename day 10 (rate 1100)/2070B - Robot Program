@@ -1,0 +1,29 @@
+t = int(input())
+for _ in range(t):
+    n, x, k = map(int, input().split())
+    s = input()
+    d, p = {}, x
+    for c in s:
+        p += 1 if c == 'R' else -1
+        d[p] = d.get(p, 0) + 1
+
+    a, p = 0, x
+    for i in range(min(n, k)):
+        p += 1 if s[i] == 'R' else -1
+        if p == 0: a += 1
+
+    if p == x:
+        print(a)
+        continue
+
+    r = k - n
+    c = r // n
+    a += c * d.get(0, 0)
+
+    r %= n
+    p = x
+    for i in range(r):
+        p += 1 if s[i] == 'R' else -1
+        if p == 0: a += 1
+
+    print(a)
