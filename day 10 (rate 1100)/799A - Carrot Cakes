@@ -1,0 +1,5 @@
+a, b, n, c, d = map(int, input().split())
+t1 = n * a
+x = (n + c - 1) // c
+t2 = max(x * d, n * b)
+print("Yes" if t2 < t1 else "No")
