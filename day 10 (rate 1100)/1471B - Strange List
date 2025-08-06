@@ -1,0 +1,10 @@
+for _ in range(int(input())):
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = a[:]
+    i = 0
+    while b[i] % x == 0:
+        b.append(b[i] // x)
+        a.append(a[i])
+        i += 1
+    print(sum(a))
