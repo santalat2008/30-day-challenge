@@ -1,0 +1,12 @@
+import math
+
+t = int(input())
+for _ in range(t):
+    n, d = map(int, input().split())
+    ans = d
+    for x in range(0, int(math.sqrt(d)) + 2):
+        cur = x + (d + x) // (x + 1)
+        if cur <= n:
+            ans = cur
+            break
+    print("YES" if ans <= n else "NO")
