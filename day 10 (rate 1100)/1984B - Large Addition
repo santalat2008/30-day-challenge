@@ -1,0 +1,24 @@
+for _ in range(int(input())):
+    a, s = map(int, input().split())
+    r = []
+    ok = 1
+    while s:
+        x = a % 10
+        y = s % 10
+        a //= 10
+        s //= 10
+        if y >= x:
+            r.append(y - x)
+        else:
+            y += (s % 10) * 10
+            s //= 10
+            if y < x or y - x > 9:
+                ok = 0
+                break
+            r.append(y - x)
+    if a: ok = 0
+    if not ok:
+        print(-1)
+    else:
+        while r and r[-1] == 0: r.pop()
+        print(int(''.join(map(str, r[::-1]))) if r else 0)
