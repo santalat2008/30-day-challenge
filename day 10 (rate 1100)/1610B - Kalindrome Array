@@ -1,0 +1,19 @@
+def pal(a):
+    return a == a[::-1]
+
+def check(a, x):
+    b = [i for i in a if i != x]
+    return pal(b)
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    l, r = 0, n - 1
+    while l < r and a[l] == a[r]:
+        l += 1
+        r -= 1
+    if l >= r or check(a, a[l]) or check(a, a[r]):
+        print("YES")
+    else:
+        print("NO")
