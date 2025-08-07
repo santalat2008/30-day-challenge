@@ -1,0 +1,8 @@
+import math
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = [a[0]] + [math.lcm(a[i], a[i+1]) for i in range(n-1)] + [a[-1]]
+    ok = all(math.gcd(b[i], b[i+1]) == a[i] for i in range(n))
+    print("YES" if ok else "NO")
