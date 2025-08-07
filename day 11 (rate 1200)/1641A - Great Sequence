@@ -1,0 +1,17 @@
+from collections import Counter
+
+t = int(input())
+for _ in range(t):
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    c = Counter(a)
+    res = 0
+    for v in sorted(c):
+        while c[v] > 0:
+            if c[v * x] > 0:
+                c[v] -= 1
+                c[v * x] -= 1
+            else:
+                c[v] -= 1
+                res += 1
+    print(res)
