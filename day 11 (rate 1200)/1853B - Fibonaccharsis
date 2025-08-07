@@ -1,0 +1,25 @@
+import sys
+i = sys.stdin.read
+f = [0, 1]
+for _ in range(2, 100):
+    f.append(f[-1] + f[-2])
+
+d = i().split()
+t = int(d[0])
+j = 1
+r = []
+
+for _ in range(t):
+    n = int(d[j])
+    k = int(d[j+1])
+    j += 2
+    a = f[k-2]
+    b = f[k-1]
+    c = 0
+    for y in range(n // b + 1):
+        x = n - b * y
+        if x % a == 0 and x // a >= 0:
+            c += 1
+    r.append(str(c))
+
+print('\n'.join(r))
