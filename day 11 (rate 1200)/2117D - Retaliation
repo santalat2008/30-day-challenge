@@ -1,0 +1,31 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    num = n * a[0] - a[-1]
+    den = n * n - 1
+
+    if den == 0 or num % den != 0:
+        print("NO")
+        continue
+
+    y = num // den
+
+    if (a[-1] - y) % n != 0:
+        print("NO")
+        continue
+
+    x = (a[-1] - y) // n
+
+    if x < 0 or y < 0:
+        print("NO")
+        continue
+
+    ok = True
+    for i in range(n):
+        if a[i] != x * (i + 1) + y * (n - i):
+            ok = False
+            break
+
+    print("YES" if ok else "NO")
