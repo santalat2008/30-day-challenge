@@ -1,0 +1,14 @@
+n = int(input())
+s = set()
+q = []
+
+for _ in range(n):
+    x = input()
+    if x in s:
+        q.remove(x)
+    else:
+        s.add(x)
+    q.insert(0, x)
+
+for x in q:
+    print(x)
