@@ -1,0 +1,19 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    ops = []
+    for i in range(n):
+        for j in range(n - 1):
+            if a[j] > a[j + 1] or (a[j] == a[j + 1] and b[j] > b[j + 1]):
+                a[j], a[j + 1] = a[j + 1], a[j]
+                b[j], b[j + 1] = b[j + 1], b[j]
+                ops.append((j + 1, j + 2))
+    ok = all(b[i] <= b[i + 1] for i in range(n - 1))
+    if not ok:
+        print(-1)
+    else:
+        print(len(ops))
+        for i, j in ops:
+            print(i, j)
