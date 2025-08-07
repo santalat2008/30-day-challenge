@@ -1,0 +1,20 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    arr = [input().strip() for __ in range(n)]
+    c1, c2, c3 = {}, {}, {}
+    res = 0
+    for s in arr:
+        k1 = '?' + s[1]
+        k2 = s[0] + '?'
+        k3 = s
+        res += c1.get(k1, 0) + c2.get(k2, 0) - 2 * c3.get(k3, 0)
+        c1[k1] = c1.get(k1, 0) + 1
+        c2[k2] = c2.get(k2, 0) + 1
+        c3[k3] = c3.get(k3, 0) + 1
+
+    print(res)
+ 
