@@ -1,0 +1,20 @@
+n = int(input())
+a = list(map(int, input().split()))
+po = [0] * (n + 1)
+pe = [0] * (n + 1)
+for i in range(n):
+    po[i + 1] = po[i]
+    pe[i + 1] = pe[i]
+    if i % 2 == 0:
+        po[i + 1] += a[i]
+    else:
+        pe[i + 1] += a[i]
+ans = 0
+for i in range(n):
+    lo = po[i]
+    le = pe[i]
+    ro = pe[n] - pe[i + 1]
+    re = po[n] - po[i + 1]
+    if lo + ro == le + re:
+        ans += 1
+print(ans)
