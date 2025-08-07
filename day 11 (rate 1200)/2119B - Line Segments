@@ -1,0 +1,39 @@
+import math
+
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __sub__(self, other):
+        return Point(self.x - other.x, self.y - other.y)
+
+    def dist2(self):
+        return self.x * self.x + self.y * self.y
+
+def solve():
+    N = int(input())
+    px, py, qx, qy = map(int, input().split())
+    p = Point(px, py)
+    q = Point(qx, qy)
+    d = (p - q).dist2()
+    A = list(map(int, input().split()))
+    A.sort()
+    l = A[-1]
+    for i in range(N - 1):
+        l -= A[i]
+    l = max(l, 0)
+    r = sum(A)
+    if l * l <= d <= r * r:
+        print("Yes")
+    else:
+        print("No")
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        solve()
+
+if __name__ == "__main__":
+    main()
+ 
