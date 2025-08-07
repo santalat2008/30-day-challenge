@@ -1,0 +1,9 @@
+from collections import Counter
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    c = Counter()
+    for i in range(n):
+        c[a[i] - i] += 1
+    print(max(c.values()))
