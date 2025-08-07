@@ -1,0 +1,29 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    used = [False] * (n + 1)
+    unmarried = -1
+
+    prefs = []
+    for i in range(1, n + 1):
+        data = list(map(int, input().split()))
+        k, lst = data[0], data[1:]
+        found = False
+        for prince in lst:
+            if not used[prince]:
+                used[prince] = True
+                found = True
+                break
+        if not found:
+            unmarried = i  
+        prefs.append(set(lst)) 
+    if unmarried == -1:
+        print("OPTIMAL")
+    else:
+        for k in range(1, n + 1):
+            if not used[k] and k not in prefs[unmarried - 1]:
+                print("IMPROVE")
+                print(unmarried, k)
+                break
+        else:
+            print("OPTIMAL")
