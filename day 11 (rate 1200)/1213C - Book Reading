@@ -1,0 +1,9 @@
+q = int(input())
+for _ in range(q):
+    n, m = map(int, input().split())
+    cnt = n // m
+    d = [(m * i) % 10 for i in range(1, 11)]
+    full = cnt // 10
+    rem = cnt % 10
+    ans = full * sum(d) + sum(d[:rem])
+    print(ans)
