@@ -1,0 +1,16 @@
+def main():
+    n, x, y = map(int, input().split())
+    cnt = 0
+    arr = list(map(int, input().split()))
+
+    for cur in arr:
+        if cur <= x:
+            cnt += 1
+
+    if x > y:
+        print(n)
+    else:
+        print((cnt + 1) // 2)
+
+if __name__ == "__main__":
+    main()
