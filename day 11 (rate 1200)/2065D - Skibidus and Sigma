@@ -1,0 +1,19 @@
+t = int(input())
+for _ in range(t):
+    n, m = map(int, input().split())
+    a = [list(map(int, input().split())) for _ in range(n)]
+    s = []
+    for arr in a:
+        ps = 0
+        cs = 0
+        for v in arr:
+            ps += v
+            cs += ps
+        s.append((cs, ps))
+    s.sort()
+    res = 0
+    c = 0
+    for sc, sm in s:
+        res += sc + c * sm
+        c += 1
+    print(res)
