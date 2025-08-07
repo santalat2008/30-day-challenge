@@ -1,0 +1,19 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    r = []
+    s = ['a'] * 200
+    r.append(''.join(s))
+    
+    for i in range(n):
+        x = s[:]
+        k = a[i]
+        if k < 200:
+            x[k] = 'a' if s[k] != 'a' else 'b'
+        r.append(''.join(x))
+        s = x
+    
+    for y in r:
+        print(y)
