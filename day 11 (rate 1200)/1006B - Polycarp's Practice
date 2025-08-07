@@ -1,0 +1,30 @@
+def main():
+    n, k = map(int, input().split())
+    res = []
+    a = list(map(int, input().split()))
+    
+    for i in range(n):
+        res.append((a[i], i + 1))  
+
+    res.sort(reverse=True)
+    res = res[:k]
+    res.sort(key=lambda x: x[1])  
+
+    lst = 0
+    total = 0
+    for i in range(k - 1):
+        total += max(a[lst:res[i][1]])
+        lst = res[i][1]
+    total += max(a[lst:])
+
+    print(total)
+
+    lst = 0
+    for i in range(k - 1):
+        print(res[i][1] - lst, end=' ')
+        lst = res[i][1]
+    print(n - lst)
+
+
+if __name__ == "__main__":
+    main()
