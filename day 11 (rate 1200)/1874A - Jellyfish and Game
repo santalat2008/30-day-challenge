@@ -1,0 +1,25 @@
+t = int(input())
+for _ in range(t):
+    n, m, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    a.sort()
+    b.sort(reverse=True)
+
+    if k % 2 == 0:
+        k = 2
+    else:
+        k = 1
+
+    for i in range(k):
+        if i % 2 == 0:
+            if a[0] < b[0]:
+                a[0], b[0] = b[0], a[0]
+                a.sort()
+                b.sort(reverse=True)
+        else:
+            if b[0] < a[0]:
+                b[0], a[0] = a[0], b[0]
+                a.sort()
+                b.sort(reverse=True)
+    print(sum(a))
