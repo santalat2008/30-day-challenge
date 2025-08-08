@@ -1,0 +1,36 @@
+import sys
+inp = sys.stdin.readline
+
+t = int(inp())
+for _ in range(t):
+    n,k = map(int, inp().split())
+    a = list(map(int, inp().split()))
+
+    f = {}
+    for x in a:
+        f[x] = f.get(x,0) + 1
+
+    v = [x for x in f if f[x] >= k]
+    if not v:
+        print(-1)
+        continue
+
+    v.sort()
+
+    bl = br = v[0]
+    cl = cr = v[0]
+    ml = 0
+
+    for i in range(1, len(v)):
+        if v[i] == v[i-1] + 1:
+            cr = v[i]
+        else:
+            if (cr - cl) > ml:
+                ml = cr - cl
+                bl, br = cl, cr
+            cl = cr = v[i]
+
+    if (cr - cl) > ml:
+        bl, br = cl, cr
+
+    print(bl, br)
