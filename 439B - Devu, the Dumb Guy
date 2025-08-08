@@ -1,0 +1,7 @@
+n, x = map(int, input().split())
+c = list(map(int, input().split()))
+c.sort(reverse=True)
+t = 0
+for i in range(n):
+    t += c[i] * max(1, x - i)
+print(t)
