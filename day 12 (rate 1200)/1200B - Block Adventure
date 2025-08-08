@@ -1,0 +1,15 @@
+t = int(input())
+for _ in range(t):
+    n, m, k = map(int, input().split())
+    h = list(map(int, input().split()))
+    ok = True
+    for i in range(n - 1):
+        need = max(0, h[i+1] - k)
+        if h[i] >= need:
+            m += h[i] - need
+        else:
+            m -= need - h[i]
+            if m < 0:
+                ok = False
+                break
+    print("YES" if ok else "NO")
