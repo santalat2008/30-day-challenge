@@ -1,0 +1,11 @@
+n, k = map(int, input().split())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+d = sorted(range(n), key=lambda i: (a[i]-b[i], a[i]))
+ans = 0
+for i in range(n):
+    if i < k or a[d[i]] <= b[d[i]]:
+        ans += a[d[i]]
+    else:
+        ans += b[d[i]]
+print(ans)
