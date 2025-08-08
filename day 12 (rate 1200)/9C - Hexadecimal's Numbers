@@ -1,0 +1,10 @@
+n = int(input())
+c = 0
+x = 1
+while x <= n:
+    c += 1
+    s = str(bin(c)[2:])  
+    if set(str(x)) <= {'0', '1'}:
+        pass
+    x *= 10
+print(c)
