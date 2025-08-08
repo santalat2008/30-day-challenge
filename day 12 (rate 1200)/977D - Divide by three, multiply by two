@@ -1,0 +1,21 @@
+def rek(a):
+    s = set(a)
+    g = {}
+    for x in a:
+        for y in [x * 2, x // 3 if x % 3 == 0 else -1]:
+            if y in s:
+                g[x] = y
+    for x in a:
+        if all(x != v for v in g.values()):
+            res = [x]
+            while x in g:
+                x = g[x]
+                res.append(x)
+            return res
+
+n = int(input())
+a = list(map(int, input().split()))
+print(*rek(a))
+
+
+ 
