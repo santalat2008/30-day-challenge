@@ -1,0 +1,31 @@
+import sys
+r=sys.stdin.readline
+
+T=int(r())
+for _ in range(T):
+    n=int(r())
+    a=list(map(int,r().split()))
+    g=[0]*(n+1)
+    for i in range(n):
+        if a[i]<i+1:
+            g[i+1]=1
+
+    bit=[0]*(n+2)
+    def u(x):
+        while x<=n:
+            bit[x]+=1
+            x+=x&(-x)
+    def q(x):
+        s=0
+        while x>0:
+            s+=bit[x]
+            x-=x&(-x)
+        return s
+
+    ans=0
+    for j in range(n,0,-1):
+        if a[j-1]<j:
+            ans+=q(a[j-1])
+        if g[j]:
+            u(j)
+    print(ans)
