@@ -1,0 +1,36 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a, b, c = map(int, input().split())
+    s = input().strip()
+    res = [""] * n
+    win = 0
+    for i in range(n):
+        if s[i] == 'R' and b > 0:
+            res[i] = 'P'
+            b -= 1
+            win += 1
+        elif s[i] == 'P' and c > 0:
+            res[i] = 'S'
+            c -= 1
+            win += 1
+        elif s[i] == 'S' and a > 0:
+            res[i] = 'R'
+            a -= 1
+            win += 1
+    if win >= (n + 1) // 2:
+        print("YES")
+        for i in range(n):
+            if res[i] == "":
+                if a > 0:
+                    res[i] = 'R'
+                    a -= 1
+                elif b > 0:
+                    res[i] = 'P'
+                    b -= 1
+                else:
+                    res[i] = 'S'
+                    c -= 1
+        print("".join(res))
+    else:
+        print("NO")
