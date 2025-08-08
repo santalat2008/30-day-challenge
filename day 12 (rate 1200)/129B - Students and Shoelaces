@@ -1,0 +1,18 @@
+n, m = map(int, input().split())
+adj = [[] for _ in range(n)]
+for _ in range(m):
+    a, b = map(int, input().split())
+    adj[a - 1].append(b - 1)
+    adj[b - 1].append(a - 1)
+
+res = 0
+while True:
+    rem = [i for i in range(n) if len(adj[i]) == 1]
+    if not rem:
+        break
+    res += 1
+    for x in rem:
+        for y in adj[x]:
+            adj[y].remove(x)
+        adj[x] = []
+print(res)
