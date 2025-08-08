@@ -1,0 +1,25 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    l, r = 0, n - 1
+    sa, sb = 0, 0
+    p = 0
+    c = 0
+    turn = 0
+    while l <= r:
+        s = 0
+        c += 1
+        if turn == 0:
+            while l <= r and s <= p:
+                s += a[l]
+                l += 1
+            sa += s
+        else:
+            while r >= l and s <= p:
+                s += a[r]
+                r -= 1
+            sb += s
+        p = s
+        turn ^= 1
+    print(c, sa, sb)
