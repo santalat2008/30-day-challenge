@@ -1,0 +1,37 @@
+n = int(input())
+a = list(map(int, input().split()))
+c = [0] * 8
+for x in a:
+    c[x] += 1
+
+res = []
+ok = True
+if c[1] != n // 3 or c[2] + c[3] != n // 3 or c[4] + c[6] != n // 3:
+    ok = False
+t = min(c[1], c[2], c[4])
+for _ in range(t):
+    res.append((1, 2, 4))
+c[1] -= t
+c[2] -= t
+c[4] -= t
+t = min(c[1], c[2], c[6])
+for _ in range(t):
+    res.append((1, 2, 6))
+c[1] -= t
+c[2] -= t
+c[6] -= t
+t = min(c[1], c[3], c[6])
+for _ in range(t):
+    res.append((1, 3, 6))
+c[1] -= t
+c[3] -= t
+c[6] -= t
+
+if sum(c) != 0:
+    ok = False
+
+if not ok:
+    print(-1)
+else:
+    for g in res:
+        print(*g)
