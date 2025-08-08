@@ -1,0 +1,14 @@
+n = int(input())
+s = input().strip()
+if n % 2 == 1:
+    print("No")
+else:
+    bal = 0
+    mn = 0
+    for ch in s:
+        bal += 1 if ch == '(' else -1
+        mn = min(mn, bal)
+    if bal == 0 and mn >= -1:
+        print("Yes")
+    else:
+        print("No")
