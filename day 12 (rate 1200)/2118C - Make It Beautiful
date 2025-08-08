@@ -1,0 +1,23 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    b = []
+    r = 0
+
+    for x in a:
+        for i in range(60):
+            if (x >> i) & 1:
+                r += 1
+            else:
+                b.append(i)
+
+    b.sort()
+    for i in b:
+        c = 1 << i
+        if k >= c:
+            k -= c
+            r += 1
+
+    print(r)
