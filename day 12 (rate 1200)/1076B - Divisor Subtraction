@@ -1,0 +1,17 @@
+def spd(x):
+    if x % 2 == 0:
+        return 2
+    i = 3
+    while i * i <= x:
+        if x % i == 0:
+            return i
+        i += 2
+    return x
+
+n = int(input())
+if n % 2 == 0:
+    print(n // 2)
+else:
+    d = spd(n)
+    n -= d
+    print(1 + n // 2)
