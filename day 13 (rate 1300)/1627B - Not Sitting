@@ -1,0 +1,15 @@
+t = int(input())
+for _ in range(t):
+    n, m = map(int, input().split())
+    d = []
+    for i in range(n):
+        for j in range(m):
+            mx = max(
+                i + j,
+                i + (m - 1 - j),
+                (n - 1 - i) + j,
+                (n - 1 - i) + (m - 1 - j)
+            )
+            d.append(mx)
+    d.sort()
+    print(*d)
