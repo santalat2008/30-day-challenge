@@ -1,0 +1,20 @@
+def g(n):
+    s = str(n)
+    m = len(s)
+    while True:
+        for x in range(m, 11):
+            r = []
+            def d(t, a, b):
+                if len(t) == x:
+                    if a == b and int(t) >= n:
+                        r.append(int(t))
+                    return
+                d(t+'4', a+1, b)
+                d(t+'7', a, b+1)
+            d('',0,0)
+            if r:
+                return min(r)
+        m += 2
+
+n = int(input())
+print(g(n))
