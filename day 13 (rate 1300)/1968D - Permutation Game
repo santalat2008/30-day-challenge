@@ -1,0 +1,41 @@
+import sys
+input = sys.stdin.readline
+
+def g(p, s):
+    v = set()
+    c = []
+    x = s
+    while x not in v:
+        v.add(x)
+        c.append(x)
+        x = p[x]
+    return c
+
+def f(p, a, s, k):
+    c = g(p, s)
+    l = len(c)
+    sm = sum(a[i] for i in c)
+    pr = [0]
+    for i in range(2*l):
+        pr.append(pr[-1] + a[c[i%l]])
+    r = 0
+    mx = min(k, l)
+    for i in range(mx+1):
+        full = (k - i)//l if k>=i else 0
+        rem = (k - i)%l if k>=i else 0
+        val = full*sm + pr[i+rem] - pr[i]
+        if val > r:
+            r = val
+    return r
+
+t = int(input())
+for _ in range(t):
+    n,k,b,s = map(int,input().split())
+    b -= 1; s -= 1
+    p = list(map(lambda x:int(x)-1,input().split()))
+    a = list(map(int,input().split()))
+    B = f(p,a,b,k)
+    S = f(p,a,s,k)
+    if B>S: print("Bodya")
+    elif B<S: print("Sasha")
+    else: print("Draw")
