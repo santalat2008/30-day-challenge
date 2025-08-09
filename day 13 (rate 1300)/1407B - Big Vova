@@ -1,0 +1,22 @@
+import sys
+from math import gcd
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    b=[]
+    g=0
+    for _ in range(n):
+        m=-1
+        val=-1
+        for x in a:
+            if x!=-1:
+                if gcd(g,x)>m:
+                    m=gcd(g,x)
+                    val=x
+        b.append(val)
+        g=gcd(g,val)
+        a[a.index(val)]=-1
+    print(*b)
