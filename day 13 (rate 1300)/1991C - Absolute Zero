@@ -1,0 +1,35 @@
+def solve():
+    import sys
+    input = sys.stdin.readline
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        a = list(map(int, input().split()))
+
+        if all(x == 0 for x in a):
+            print(0)
+            print()
+            continue
+
+        ops = []
+        for _ in range(40):
+            max_a = max(a)
+            if max_a == 0:
+                break
+            ops.append(max_a)
+            a = [abs(x - max_a) for x in a]
+            if all(x == 0 for x in a):
+                break
+
+        if all(x == 0 for x in a):
+            print(len(ops))
+            if ops:
+                print(*ops)
+            else:
+                print()
+        else:
+            print(-1)
+
+
+if __name__ == "__main__":
+    solve()
