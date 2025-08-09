@@ -1,0 +1,18 @@
+import sys
+input=sys.stdin.readline
+q=int(input())
+for _ in range(q):
+    n=int(input())
+    p=list(map(int,input().split()))
+    ans=[0]*n
+    for i in range(n):
+        if ans[i]: continue
+        cur=i
+        cyc=[]
+        while not ans[cur]:
+            cyc.append(cur)
+            cur=p[cur]-1
+        l=len(cyc)
+        for v in cyc:
+            ans[v]=l
+    print(*ans)
