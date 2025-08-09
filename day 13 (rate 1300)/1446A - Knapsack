@@ -1,0 +1,23 @@
+import math
+for _ in range(int(input())):
+    n,W=map(int,input().split())
+    a=list(map(int,input().split()))
+    h=math.ceil(W/2)
+    ans=[]
+    for i,x in enumerate(a,1):
+        if h<=x<=W:
+            print(1)
+            print(i)
+            break
+    else:
+        s=0
+        for i,x in enumerate(a,1):
+            if x<=W:
+                s+=x
+                ans.append(i)
+                if s>=h:
+                    print(len(ans))
+                    print(*ans)
+                    break
+        else:
+            print(-1)
