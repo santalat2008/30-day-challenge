@@ -1,0 +1,18 @@
+for _ in range(int(input())):
+    n=int(input())
+    s=[]
+    for _ in range(n):
+        s.append(set(map(int,input().split()[1:])))
+    allu=set().union(*s)
+    c={}
+    for st in s:
+        for x in st: c[x]=c.get(x,0)+1
+    ans=0
+    for i in range(n):
+        t=set()
+        for j in range(n):
+            if j!=i:
+                t|=s[j]
+        if t!=allu:
+            ans=max(ans,len(t))
+    print(ans)
