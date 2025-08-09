@@ -1,0 +1,22 @@
+n=int(input())
+a=list(map(int,input().split()))
+p={}
+ok={}
+for i,x in enumerate(a):
+    if x not in p:
+        p[x]=i
+        ok[x]=0
+    elif ok[x]==0:
+        ok[x]=i-p[x]
+        p[x]=i
+    elif ok[x]==i-p[x]:
+        p[x]=i
+    else:
+        ok[x]=-1
+r=[]
+for x in sorted(p):
+    if ok[x]!=-1:
+        r.append((x,ok[x]))
+print(len(r))
+for x,d in r:
+    print(x,d)
