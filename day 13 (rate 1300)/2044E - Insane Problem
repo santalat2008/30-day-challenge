@@ -1,0 +1,19 @@
+import sys
+i=sys.stdin.readline
+
+T=int(i())
+for _ in range(T):
+    k,l1,r1,l2,r2=map(int,i().split())
+    ans=0
+    p=1
+    while p<=r2:
+        lx=(l2+p-1)//p
+        hx=r2//p
+        lx=max(lx,l1)
+        hx=min(hx,r1)
+        if lx<=hx:
+            ans+=hx-lx+1
+        if p>10**18//k:
+            break
+        p*=k
+    print(ans)
