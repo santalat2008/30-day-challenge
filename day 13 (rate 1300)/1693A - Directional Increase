@@ -1,0 +1,11 @@
+for _ in range(int(input())):
+    n=int(input())
+    a=list(map(int,input().split()))
+    b=0
+    ok=True
+    for x in a:
+        b+=x
+        if b<0: ok=False;break
+        if b==0 and x!=a[-1]:
+            if any(a[i]!=0 for i in range(a.index(x)+1,n)): ok=False;break
+    print("Yes" if ok and b==0 else "No")
