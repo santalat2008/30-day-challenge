@@ -1,0 +1,22 @@
+import sys
+import heapq
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n,m = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    res = float('inf')
+    s = 0
+    h = []
+    
+    for i in range(n-1, -1, -1):
+        if i < m:
+            res = min(res, s + a[i])
+        s += b[i]
+        heapq.heappush(h, -b[i])
+        if len(h) > m - 1:
+            s += heapq.heappop(h)
+    print(res)
