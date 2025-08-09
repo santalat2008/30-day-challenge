@@ -1,0 +1,8 @@
+for _ in range(int(input())):
+    n=int(input())
+    a=list(map(int,input().split()))
+    d={}
+    for x in a:
+        k=x&((1<<31)-1)
+        d[k]=d.get(k,0)+1
+    print(max(d.values()))
