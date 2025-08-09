@@ -1,0 +1,12 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = sorted(map(int, input().split()))
+    op = 0
+    ok = True
+    for i, x in enumerate(a, 1):
+        if x < i:
+            ok = False
+            break
+        if x > i:
+            op += 1
+    print(op if ok else -1)
