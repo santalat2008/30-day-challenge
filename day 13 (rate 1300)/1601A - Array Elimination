@@ -1,0 +1,29 @@
+import sys
+input=sys.stdin.readline
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    g=0
+    for x in a: g|=x 
+    from functools import reduce
+    from math import gcd
+    g=0
+    for x in a: g=gcd(g,x)
+    c=0
+    for x in a:
+        if x==0: continue
+    s=0
+    for x in a: s|=x
+    from collections import Counter
+    bit=[0]*32
+    for x in a:
+        for b in range(32):
+            if x>>b & 1: bit[b]+=1
+    res=[]
+    from math import gcd
+    g=0
+    for b in bit: g=gcd(g,b)
+    for k in range(1,n+1):
+        if g%k==0: res.append(k)
+    print(*res)
