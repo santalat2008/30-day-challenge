@@ -1,0 +1,22 @@
+import sys
+input=sys.stdin.readline
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    s=input().strip()
+    b=[]; r=[]
+    for x,c in zip(a,s):
+        if c=='B': b.append(x)
+        else: r.append(x)
+    b.sort()
+    r.sort()
+    ok=1
+    p=1
+    for x in b:
+        if x<p: ok=0; break
+        p+=1
+    for x in r:
+        if x>p: ok=0; break
+        p+=1
+    print("YES" if ok else "NO")
