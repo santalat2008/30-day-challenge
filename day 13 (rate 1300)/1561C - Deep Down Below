@@ -1,0 +1,18 @@
+import sys
+input=sys.stdin.readline
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    c=[]
+    for _ in range(n):
+        k,*a=map(int,input().split())
+        m=max(a[i]-i for i in range(k))+1
+        c.append((m,k))
+    c.sort()
+    s=0
+    d=0
+    for m,k in c:
+        if s+d<m:
+            s=m-d
+        d+=k
+    print(s)
