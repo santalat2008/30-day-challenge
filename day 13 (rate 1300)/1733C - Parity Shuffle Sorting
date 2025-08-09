@@ -1,0 +1,31 @@
+import sys
+input = sys.stdin.readline
+
+T = int(input())
+for _ in range(T):
+    n = int(input())
+    a = list(map(int, input().split()))
+    e = -1
+    o = -1
+    for i, x in enumerate(a):
+        if x % 2 == 0 and e == -1:
+            e = i
+        if x % 2 == 1 and o == -1:
+            o = i
+
+    if all(a[i] <= a[i+1] for i in range(n-1)):
+        print(0)
+        continue
+
+    res = []
+    b = e if e != -1 else o
+    for i in range(n):
+        if i != b and a[i] % 2 != a[b] % 2:
+            res.append((b+1, i+1))
+    for i in range(n-1):
+        if i != b and (a[i] % 2) == (a[b] % 2):
+            res.append((i+1, i+2))
+
+    print(len(res))
+    for x,y in res:
+        print(x,y)
