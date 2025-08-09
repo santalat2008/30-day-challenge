@@ -1,0 +1,15 @@
+q=int(input())
+for _ in range(q):
+    n=int(input())
+    while True:
+        x=n
+        ok=True
+        while x>0:
+            if x%3==2:
+                ok=False
+                break
+            x//=3
+        if ok:
+            print(n)
+            break
+        n+=1
