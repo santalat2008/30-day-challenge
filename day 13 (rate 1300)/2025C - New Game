@@ -1,0 +1,23 @@
+import sys
+input=sys.stdin.readline
+t=int(input())
+for _ in range(t):
+    n,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    from collections import Counter
+    c=Counter(a)
+    v=sorted(c)
+    m=0
+    l=0
+    cnt=0
+    for i,x in enumerate(v):
+        if i>0 and x!=v[i-1]+1:
+            l=0
+            cnt=0
+        cnt+=c[x]
+        l+=1
+        while l>k:
+            cnt-=c[v[i-l+1]]
+            l-=1
+        m=max(m,cnt)
+    print(m)
