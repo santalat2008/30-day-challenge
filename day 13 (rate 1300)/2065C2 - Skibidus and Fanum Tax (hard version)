@@ -1,0 +1,13 @@
+for _ in range(int(input())):
+    n,m=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    mx=max(b)
+    for i in range(n):
+        if i and a[i]<a[i-1]:
+            if mx-a[i]>=a[i]: a[i]=mx-a[i]
+            if a[i]<a[i-1]: break
+    else:
+        print("YES")
+        continue
+    print("NO")
