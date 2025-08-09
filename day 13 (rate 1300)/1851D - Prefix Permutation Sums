@@ -1,0 +1,24 @@
+import sys
+input = sys.stdin.readline
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    p = list(map(int, input().split()))
+    total = n * (n + 1) // 2
+    s = set(range(1, n + 1))
+    diffs = [p[0]]
+    for i in range(1, n - 1):
+        diffs.append(p[i] - p[i - 1])
+    sm = sum(diffs)
+    miss = total - p[-1]  
+    cnt = {}
+    for x in diffs:
+        cnt[x] = cnt.get(x, 0) + 1
+    if miss < 1 or miss > n:
+        print("NO")
+        continue
+    cnt[miss] = cnt.get(miss, 0) + 1
+    if max(cnt.values()) > 1:
+        print("NO")
+    else:
+        print("YES")
