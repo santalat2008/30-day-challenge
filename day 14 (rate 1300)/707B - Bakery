@@ -1,0 +1,11 @@
+n,m,k=map(int,input().split())
+e=[tuple(map(int,input().split()))for _ in range(m)]
+if k:
+    s=set(map(int,input().split()))
+    ans=float('inf')
+    for u,v,l in e:
+        if (u in s)^(v in s):
+            ans=min(ans,l)
+    print(ans if ans!=float('inf') else -1)
+else:
+    print(-1)
