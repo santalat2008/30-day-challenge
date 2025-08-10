@@ -1,0 +1,21 @@
+import sys
+input = sys.stdin.read
+
+d = input().split()
+t = int(d[0])
+o = []
+idx = 1
+for _ in range(t):
+    n = int(d[idx]); idx += 1
+    p = list(map(int, d[idx:idx+n])); idx += n
+    pos = [0]*(n+1)
+    for i, v in enumerate(p):
+        pos[v] = i
+    mn = mx = pos[1]
+    ans = ["1"]
+    for m in range(2, n+1):
+        mn = min(mn, pos[m])
+        mx = max(mx, pos[m])
+        ans.append("1" if mx - mn + 1 == m else "0")
+    o.append("".join(ans))
+print("\n".join(o))
