@@ -1,0 +1,24 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n, m, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+    pos = [0]*(n+1)
+    for i, v in enumerate(a):
+        pos[v] = i
+    need = [False]*(n+1)
+    for v in b:
+        need[v] = True
+    minpos = min(pos[v] for v in range(1, n+1) if need[v])
+    ok = True
+    for v in b:
+        if pos[v] != minpos:
+            ok = False
+            break
+        need[v] = False
+        if any(need):
+            minpos = min(pos[x] for x in range(1, n+1) if need[x])
+    print("YA" if ok else "TIDAK")
