@@ -1,0 +1,14 @@
+p,q,l,r=map(int,input().split())
+z=[tuple(map(int,input().split()))for _ in range(p)]
+x=[tuple(map(int,input().split()))for _ in range(q)]
+c=0
+for t in range(l,r+1):
+    f=0
+    for a,b in z:
+        for u,v in x:
+            if not(b<t+u or v+t<a):
+                f=1
+                break
+        if f:break
+    c+=f
+print(c)
