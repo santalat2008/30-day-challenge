@@ -1,0 +1,18 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n, x = map(int, input().split())
+    a = list(map(int, input().split()))
+    lo, hi = 1, max(a)
+    while lo < hi:
+        mid = (lo + hi) // 2
+        need = 0
+        for v in a:
+            need += (v + mid - 1) // mid
+        if need <= x * mid:
+            hi = mid
+        else:
+            lo = mid + 1
+    print(lo)
