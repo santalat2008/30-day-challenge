@@ -1,0 +1,47 @@
+import sys
+input = sys.stdin.readline
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    s = input().strip()
+    L = [0]*(n+1)
+    R = [0]*(n+1)
+    p = [0]*(n+1)
+    for i in range(1, n+1):
+        l, r = map(int, input().split())
+        L[i], R[i] = l, r
+        if l: p[l] = i
+        if r: p[r] = i
+
+    from collections import deque
+    INF = 10**9
+    d = [INF]*(n+1)
+    q = deque()
+    for i in range(1, n+1):
+        if L[i] == 0 and R[i] == 0:
+            d[i] = 0
+            q.append(i)
+
+    while q:
+        v = q.popleft()
+        if p[v]:
+            u = p[v]
+            c = d[v] + (s[u-1] != 'L' if L[u] == v else (s[u-1] != 'R' if R[u] == v else 0))
+            if c < d[u]:
+                d[u] = c
+                q.append(u)
+        if L[v]:
+            u = L[v]
+            c = d[v] + (s[v-1] != 'U')
+            if c < d[u]:
+                d[u] = c
+                q.append(u)
+        if R[v]:
+            u = R[v]
+            c = d[v] + (s[v-1] != 'U')
+            if c < d[u]:
+                d[u] = c
+                q.append(u)
+
+    print(d[1])  
