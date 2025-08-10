@@ -1,0 +1,9 @@
+n = int(input())
+a = list(map(int, input().split()))
+s = sum(a) / 2
+c = 0
+for i, v in enumerate(a, 1):
+    c += v
+    if c >= s:
+        print(i)
+        break
