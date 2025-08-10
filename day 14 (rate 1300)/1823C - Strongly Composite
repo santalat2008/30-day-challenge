@@ -1,0 +1,23 @@
+import sys
+import math
+input=sys.stdin.read
+d=map(int,input().split())
+t=next(d)
+for _ in range(t):
+    n=next(d)
+    p={}
+    for _ in range(n):
+        x=next(d)
+        f=2
+        while f*f<=x:
+            while x%f==0:
+                p[f]=p.get(f,0)+1
+                x//=f
+            f+=1
+        if x>1:p[x]=p.get(x,0)+1
+    ans=0
+    r=0
+    for v in p.values():
+        ans+=v//2
+        r+=v%2
+    print(ans+r//3)
