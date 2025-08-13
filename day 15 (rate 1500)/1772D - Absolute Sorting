@@ -1,0 +1,13 @@
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    l, r = 0, 10**9
+    ok = 1
+    for i in range(n - 1):
+        if a[i] == a[i+1]:
+            continue
+        if a[i] < a[i+1]:
+            r = min(r, (a[i] + a[i+1]) // 2)
+        else:
+            l = max(l, (a[i] + a[i+1] + 1) // 2)
+    print(l if l <= r else -1)
