@@ -1,0 +1,13 @@
+n, m, d = map(int, input().split())
+a = []
+for _ in range(n):
+    a.extend(map(int, input().split()))
+
+r0 = a[0] % d
+if any(x % d != r0 for x in a):
+    print(-1)
+else:
+    a.sort()
+    med = a[len(a)//2]
+    moves = sum(abs(x - med) // d for x in a)
+    print(moves)
