@@ -1,0 +1,25 @@
+import sys
+input=sys.stdin.read
+d=iter(input().split())
+n=int(next(d)); m=int(next(d))
+c=[0]*(n+1)
+for _ in range(m):
+    u=int(next(d)); v=int(next(d))
+    if u>v: u,v=v,u
+    c[u]+=1
+vul=sum(c[1:]>0 for c in [c])
+q=int(next(d))
+for _ in range(q):
+    t=int(next(d))
+    if t==1:
+        u=int(next(d)); v=int(next(d))
+        if u>v: u,v=v,u
+        if c[u]==0: vul+=1
+        c[u]+=1
+    elif t==2:
+        u=int(next(d)); v=int(next(d))
+        if u>v: u,v=v,u
+        c[u]-=1
+        if c[u]==0: vul-=1
+    else:
+        print(n-vul)
