@@ -1,0 +1,16 @@
+import sys
+it=iter(sys.stdin.read().split())
+t=int(next(it))
+o=[]
+for _ in range(t):
+    n=int(next(it)); m=int(next(it))
+    x=n; a=b=0
+    while x%2==0: a+=1; x//=2
+    x=n
+    while x%5==0: b+=1; x//=5
+    k=1
+    while a<b and k*2<=m: k*=2; a+=1
+    while b<a and k*5<=m: k*=5; b+=1
+    k*=m//k
+    o.append(str(n*k))
+print("\n".join(o))
