@@ -1,0 +1,18 @@
+s=input()
+t=input()
+def sub(a,b):
+    i=0
+    for c in a:
+        if i<len(b) and c==b[i]: i+=1
+    return i==len(b)
+if sub(s,t):
+    print("automaton")
+elif sorted(s)==sorted(t):
+    print("array")
+else:
+    from collections import Counter
+    cs,ct=Counter(s),Counter(t)
+    if all(cs[c]>=ct[c] for c in ct):
+        print("both")
+    else:
+        print("need tree")
