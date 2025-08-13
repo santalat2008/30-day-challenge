@@ -1,0 +1,22 @@
+import sys
+r = sys.stdin.readline
+t = int(r())
+for _ in range(t):
+    n, m = map(int, r().split())
+    a = list(map(int, r().split()))
+    s = r().strip()
+    pref = [1] * (n + 1)
+    for i in range(n):
+        pref[i + 1] = (pref[i] * a[i]) % m
+    suff = [1] * (n + 1)
+    for i in range(n - 1, -1, -1):
+        suff[i] = (suff[i + 1] * a[i]) % m
+    L, R = 0, n - 1
+    out = []
+    for i in range(n):
+        out.append((pref[R + 1] * suff[L] * pow((pref[L] * suff[R + 1]) % m, 0, m)) % m if m > 1 else 0)
+        if s[i] == 'L':
+            L += 1
+        else:
+            R -= 1
+    print(*out)
