@@ -1,0 +1,12 @@
+import sys
+r=sys.stdin.readline
+for _ in range(int(r())):
+    n=int(r()); s=r().strip()
+    ans=10**9
+    for L in (2,3,4,7):
+        if L>n: continue
+        for i in range(n-L+1):
+            sub=s[i:i+L]
+            if sub.count('a')>sub.count('b') and sub.count('a')>sub.count('c'):
+                ans=min(ans,L)
+    print(ans if ans<10**9 else -1)
