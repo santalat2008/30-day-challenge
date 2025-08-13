@@ -1,0 +1,7 @@
+t=int(input())
+for _ in range(t):
+    x=int(input())
+    if x%2: print(-1); continue
+    a=x//2
+    if a & x: print(-1)
+    else: print(a^x, a)
