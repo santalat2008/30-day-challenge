@@ -1,0 +1,47 @@
+import sys
+from collections import Counter
+input=sys.stdin.read
+d=iter(input().split())
+t=int(next(d))
+o=[]
+for _ in range(t):
+    n=int(next(d))
+    a=[int(next(d)) for _ in range(n)]
+    b=[int(next(d)) for _ in range(n)]
+    ca,cb=Counter(a),Counter(b)
+    ans=0
+    for k in list(ca.keys()):
+        m=min(ca[k],cb.get(k,0))
+        if m:
+            ca[k]-=m
+            cb[k]-=m
+            if ca[k]==0: del ca[k]
+            if cb.get(k,0)==0: cb.pop(k,None)
+    def f(x): return len(str(x))
+    for x in list(ca.keys()):
+        if x>9:
+            c=ca[x]
+            ans+=c
+            ca[f(x)]=ca.get(f(x),0)+c
+            del ca[x]
+    for x in list(cb.keys()):
+        if x>9:
+            c=cb[x]
+            ans+=c
+            cb[f(x)]=cb.get(f(x),0)+c
+            del cb[x]
+    for k in list(ca.keys()):
+        m=min(ca[k],cb.get(k,0))
+        if m:
+            ca[k]-=m
+            cb[k]-=m
+            if ca[k]==0: del ca[k]
+            if cb.get(k,0)==0: cb.pop(k,None)
+    for x in list(ca.keys()):
+        if x>1:
+            ans+=ca[x]
+    for x in list(cb.keys()):
+        if x>1:
+            ans+=cb[x]
+    o.append(str(ans))
+print("\n".join(o))
