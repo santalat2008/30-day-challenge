@@ -1,0 +1,13 @@
+import math
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    def ok(b):
+        return all(math.gcd(b[i],b[i+1])<=math.gcd(b[i+1],b[i+2]) for i in range(len(b)-2))
+    f=False
+    for i in range(n):
+        if ok(a[:i]+a[i+1:]):
+            f=True
+            break
+    print("YES" if f else "NO")
