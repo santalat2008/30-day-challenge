@@ -1,0 +1,21 @@
+import sys
+import math
+input = sys.stdin.read
+data = input().split()
+t = int(data[0])
+idx = 1
+out = []
+for _ in range(t):
+    n = int(data[idx]); k = int(data[idx+1]); idx += 2
+    a = list(map(int, data[idx:idx+n])); idx += n
+    if k == 1:
+        mn = min(a)
+        a.sort()
+        mindiff = min(a[i+1] - a[i] for i in range(n-1))
+        out.append(str(min(mn, mindiff)))
+    else:
+        g = a[0]
+        for v in a[1:]:
+            g = math.gcd(g, v)
+        out.append(str(g))
+print("\n".join(out))
