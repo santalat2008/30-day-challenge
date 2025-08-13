@@ -1,0 +1,16 @@
+for _ in range(int(input())):
+    n = int(input())
+    x0 = {}
+    y0 = {}
+    for _ in range(n):
+        x, y = map(int, input().split())
+        if y == 0:
+            x0[x] = 1
+        else:
+            y0[x] = 1
+    ans = 0
+    for xx in x0:
+        ans += (len(x0) - 1) * y0.get(xx, 0)
+    for xx in y0:
+        ans += (len(y0) - 1) * x0.get(xx, 0)
+    print(ans)
