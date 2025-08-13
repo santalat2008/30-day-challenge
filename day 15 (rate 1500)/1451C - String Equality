@@ -1,0 +1,17 @@
+import sys
+it=iter(sys.stdin.read().split())
+t=int(next(it))
+o=[]
+for _ in range(t):
+    n=int(next(it)); k=int(next(it))
+    a=[0]*26; b=[0]*26
+    for c in next(it): a[ord(c)-97]+=1
+    for c in next(it): b[ord(c)-97]+=1
+    ok=1
+    for i in range(26):
+        if a[i]<b[i]: ok=0; break
+        a[i]-=b[i]
+        if a[i]%k: ok=0; break
+        if i<25: a[i+1]+=a[i]
+    o.append("Yes" if ok else "No")
+print("\n".join(o))
