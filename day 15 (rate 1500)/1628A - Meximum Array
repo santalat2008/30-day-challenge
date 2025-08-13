@@ -1,0 +1,20 @@
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    res=[]
+    i=0
+    while i<n:
+        cnt=[0]*(n+2)
+        mex=0
+        j=i
+        while j<n:
+            cnt[a[j]]+=1
+            while cnt[mex]>0: mex+=1
+            if all(cnt[x]>0 for x in range(mex)):
+                break
+            j+=1
+        res.append(mex)
+        i=j+1
+    print(len(res))
+    print(*res)
