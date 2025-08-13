@@ -1,0 +1,21 @@
+import sys
+input=sys.stdin.read
+MOD=10**9+7
+d=iter(input().split())
+t=int(next(d))
+o=[]
+for _ in range(t):
+    n=int(next(d))
+    a=[int(next(d)) for _ in range(n)]
+    x=a[0]
+    for v in a[1:]:
+        x&=v
+    c=a.count(x)
+    if c<2 or any((x & v) != x for v in a):
+        o.append("0")
+    else:
+        res=(c*(c-1))%MOD
+        for i in range(1,n-1):
+            res=(res*i)%MOD
+        o.append(str(res))
+print("\n".join(o))
