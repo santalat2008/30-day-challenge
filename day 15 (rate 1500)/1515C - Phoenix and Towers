@@ -1,0 +1,14 @@
+import sys,heapq
+r=sys.stdin.readline
+for _ in range(int(r())):
+    n,m,x=map(int,r().split())
+    h=list(map(int,r().split()))
+    ans=[0]*n
+    pq=[(0,i+1) for i in range(m)]
+    heapq.heapify(pq)
+    for i,v in enumerate(h):
+        cur,idx=heapq.heappop(pq)
+        ans[i]=idx
+        heapq.heappush(pq,(cur+v,idx))
+    print("YES")
+    print(*ans)
