@@ -1,0 +1,32 @@
+import sys
+from collections import Counter
+input=sys.stdin.read
+d=iter(input().split())
+n=int(next(d))
+a=[int(next(d)) for _ in range(n)]
+q=int(next(d))
+c=Counter(a)
+f2=f4=f6=f8=0
+for v in c.values():
+    if v>=8: f8+=1
+    elif v>=6: f6+=1
+    elif v>=4: f4+=1
+    elif v>=2: f2+=1
+def ch(): return f4>=2 or (f4>=1 and f2>=2) or f8>=1 or (f6>=1 and (f4>=1 or f2>=1))
+for _ in range(q):
+    s=next(d); x=int(next(d))
+    if s=='+':
+        v=c.get(x,0)
+        if v==7: f8+=1; f6-=1
+        elif v==5: f6+=1; f4-=1
+        elif v==3: f4+=1; f2-=1
+        elif v==1: f2+=1
+        c[x]=v+1
+    else:
+        v=c[x]
+        if v==8: f8-=1; f6+=1
+        elif v==6: f6-=1; f4+=1
+        elif v==4: f4-=1; f2+=1
+        elif v==2: f2-=1
+        c[x]=v-1
+    print("YES" if ch() else "NO")
