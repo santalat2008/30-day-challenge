@@ -1,0 +1,7 @@
+t=int(input())
+for _ in range(t):
+    k,x,a=map(int,input().split())
+    need=0
+    for _ in range(x):
+        need=need*k+1
+    print("YES" if a>need else "NO")
