@@ -1,0 +1,9 @@
+t=int(input())
+for _ in range(t):
+    n,g,b=map(int,input().split())
+    need=(n+1)//2
+    full=(need//g)*(g+b)
+    rem=need%g
+    if rem==0: full-=b
+    else: full+=rem
+    print(max(n,full))
