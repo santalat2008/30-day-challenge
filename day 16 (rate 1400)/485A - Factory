@@ -1,0 +1,4 @@
+a,m=map(int,input().split())
+while a%m:
+    a+=a%m
+print("Yes" if a%m==0 else "No")
