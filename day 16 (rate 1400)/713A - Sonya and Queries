@@ -1,0 +1,17 @@
+t=int(input())
+d={}
+def ptn(x):
+    s=''
+    for _ in range(18):
+        s=str(x%10%2)+s
+        x//=10
+    return s
+for _ in range(t):
+    c,v=input().split()
+    if c=='?':
+        v=v.zfill(18)
+        print(d.get(v,0))
+    else:
+        v=int(v)
+        k=ptn(v)
+        d[k]=d.get(k,0)+(1 if c=='+' else -1)
