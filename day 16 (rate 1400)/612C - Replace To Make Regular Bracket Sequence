@@ -1,0 +1,21 @@
+s=input().strip()
+st=[]
+cnt=0
+pairs={'>':'<',']':'[','}':'{',')':'('}
+if len(s)%2:
+    print("Impossible")
+    exit()
+for c in s:
+    if c in "<[{(":
+        st.append(c)
+    else:
+        if not st:
+            print("Impossible")
+            exit()
+        o=st.pop()
+        if pairs[c]!=o:
+            cnt+=1
+if st:
+    print("Impossible")
+else:
+    print(cnt)
