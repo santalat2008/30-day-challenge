@@ -1,0 +1,22 @@
+mod=998244353
+n=int(input())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+m=int(input())
+c=list(map(int,input().split()))
+d=list(map(int,input().split()))
+dc=dict(zip(c,d))
+ans=1
+for i in range(n):
+    p=a[i]
+    e1=b[i]
+    e2=dc.get(p,0)
+    if e2>e1:
+        ans=0
+        break
+    if e2<e1:
+        if e2==0:
+            ans=0
+            break
+        ans=ans*(e1-e2+1)%mod
+print(ans%mod)
