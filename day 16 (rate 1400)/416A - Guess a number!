@@ -1,0 +1,18 @@
+n=int(input())
+l=-2_000_000_000
+r=2_000_000_000
+for _ in range(n):
+    s,x,a=input().split()
+    x=int(x)
+    if a=="Y":
+        if s==">": l=max(l,x+1)
+        elif s==">=": l=max(l,x)
+        elif s=="<": r=min(r,x-1)
+        else: r=min(r,x)
+    else:
+        if s==">": r=min(r,x)
+        elif s==">=": r=min(r,x-1)
+        elif s=="<": l=max(l,x)
+        else: l=max(l,x+1)
+if l<=r: print(l)
+else: print("Impossible")
