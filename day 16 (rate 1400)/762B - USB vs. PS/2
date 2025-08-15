@@ -1,0 +1,32 @@
+a,b,c=map(int,input().split())
+m=int(input())
+u=[]
+p=[]
+for _ in range(m):
+    v,t=input().split()
+    v=int(v)
+    if t=="USB":u.append(v)
+    else:p.append(v)
+u.sort()
+p.sort()
+cnt=0
+cost=0
+for x in u:
+    if a>0:
+        cnt+=1
+        cost+=x
+        a-=1
+    elif c>0:
+        cnt+=1
+        cost+=x
+        c-=1
+for x in p:
+    if b>0:
+        cnt+=1
+        cost+=x
+        b-=1
+    elif c>0:
+        cnt+=1
+        cost+=x
+        c-=1
+print(cnt,cost)
