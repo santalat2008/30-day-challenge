@@ -1,0 +1,28 @@
+import sys,heapq
+input=sys.stdin.readline
+q=int(input())
+fifo=[]
+prio=[]
+served=set()
+cid=1
+out=[]
+for _ in range(q):
+    t=input().split()
+    if t[0]=="1":
+        m=int(t[1])
+        fifo.append(cid)
+        heapq.heappush(prio,(-m,cid))
+        cid+=1
+    elif t[0]=="2":
+        while fifo[0] in served:
+            fifo.pop(0)
+        x=fifo.pop(0)
+        served.add(x)
+        out.append(str(x))
+    else:
+        while prio[0][1] in served:
+            heapq.heappop(prio)
+        _,x=heapq.heappop(prio)
+        served.add(x)
+        out.append(str(x))
+print(" ".join(out))
