@@ -1,0 +1,20 @@
+t=int(input())
+for _ in range(t):
+    s=input().strip()
+    x=y=0
+    seen=set()
+    ans=0
+    for c in s:
+        nx,ny=x,y
+        if c=='N': ny+=1
+        elif c=='S': ny-=1
+        elif c=='E': nx+=1
+        else: nx-=1
+        seg=((x,y),(nx,ny)) if (x,y)<(nx,ny) else ((nx,ny),(x,y))
+        if seg in seen:
+            ans+=1
+        else:
+            seen.add(seg)
+            ans+=5
+        x,y=nx,ny
+    print(ans)
