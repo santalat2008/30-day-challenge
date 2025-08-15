@@ -1,0 +1,12 @@
+n,m=map(int,input().split())
+c=[0]*(n+1)
+for _ in range(m):
+    x,y,z=map(int,input().split())
+    s={1,2,3}
+    if c[x]: s.discard(c[x])
+    if c[y]: s.discard(c[y])
+    if c[z]: s.discard(c[z])
+    if not c[x]: c[x]=s.pop()
+    if not c[y]: c[y]=s.pop()
+    if not c[z]: c[z]=s.pop()
+print(*c[1:])
