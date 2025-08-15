@@ -1,0 +1,17 @@
+n,m,q=map(int,input().split())
+g=[list(map(int,input().split())) for _ in range(n)]
+mx=[0]*n
+def calc(r):
+    c=t=0
+    for v in g[r]:
+        if v:t+=1;c=max(c,t)
+        else:t=0
+    return c
+for i in range(n):
+    mx[i]=calc(i)
+for _ in range(q):
+    x,y=map(int,input().split())
+    x-=1;y-=1
+    g[x][y]^=1
+    mx[x]=calc(x)
+    print(max(mx))
