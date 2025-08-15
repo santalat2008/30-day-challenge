@@ -1,0 +1,9 @@
+t=input()
+n=len(t)
+for i in range(1,n):
+    if t[:n-i]==t[i:]:
+        if i<n-i:
+            print("YES",t[:n-i],sep='\n')
+            break
+else:
+    print("NO")
