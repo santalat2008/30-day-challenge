@@ -1,0 +1,10 @@
+n,k=map(int,input().split())
+s=list(map(int,input().split()))
+if n<=k:
+    print(s[-1])
+else:
+    m=0
+    for i in range(n-k):
+        m=max(m,s[i]+s[2*(n-k)-i-1])
+    m=max(m,s[-1])
+    print(m)
