@@ -1,0 +1,29 @@
+n=int(input())
+a=[list(map(int,input().split())) for _ in range(n)]
+if n==1:
+    print(1)
+    exit()
+x=y=0
+for i in range(n):
+    for j in range(n):
+        if a[i][j]==0:
+            x,y=i,j
+s=set(sum(r) for r in a if 0 not in r)
+if len(s)!=1:
+    print(-1)
+    exit()
+t=s.pop()
+v=t-sum(a[x])
+if v<=0:
+    print(-1)
+    exit()
+a[x][y]=v
+ok=True
+for i in range(n):
+    if sum(a[i])!=t or sum(a[j][i] for j in range(n))!=t:
+        ok=False
+d1=sum(a[i][i] for i in range(n))
+d2=sum(a[i][n-1-i] for i in range(n))
+if d1!=t or d2!=t:
+    ok=False
+print(v if ok else -1)
