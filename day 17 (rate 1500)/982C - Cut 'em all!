@@ -1,0 +1,30 @@
+import sys
+sys.setrecursionlimit(300000)
+input=sys.stdin.readline
+
+n=int(input())
+g=[[] for _ in range(n+1)]
+for _ in range(n-1):
+    u,v=map(int,input().split())
+    g[u].append(v)
+    g[v].append(u)
+
+if n%2==1:
+    print(-1)
+    exit()
+
+res=0
+def dfs(u,p):
+    global res
+    sz=1
+    for v in g[u]:
+        if v==p: continue
+        s=dfs(v,u)
+        if s%2==0:
+            res+=1
+        else:
+            sz+=s
+    return sz
+
+dfs(1,-1)
+print(res)
