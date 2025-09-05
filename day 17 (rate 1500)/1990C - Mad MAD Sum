@@ -1,0 +1,19 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    s=sum(a)
+    mx=0
+    cnt={}
+    for x in a:
+        cnt[x]=cnt.get(x,0)+1
+        if cnt[x]==2:
+            mx=max(mx,x)
+    while mx>0:
+        s+=mx*n
+        n-=1
+        mx-=1
+    print(s)
