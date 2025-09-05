@@ -1,0 +1,13 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    b = list(map(int, input().split()))
+    s = sum(b)
+    b.sort()
+    found = False
+    for i in range(2*n):
+        a1 = s - b[i]
+        a = [a1] + b[:i] + b[i+1:]
+        print(*a)
+        found = True
+        break
