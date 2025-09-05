@@ -1,0 +1,18 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    p=list(map(int,input().split()))
+    pos=[0]*(n+1)
+    for i,x in enumerate(p):
+        pos[x]=i
+    ok=True
+    i=1
+    while i<=n:
+        j=pos[i]
+        while i<=n and j<n and pos[i]==j:
+            i+=1
+            j+=1
+    print("Yes" if i==n+1 else "No")
