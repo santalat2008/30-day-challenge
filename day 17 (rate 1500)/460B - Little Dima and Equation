@@ -1,0 +1,11 @@
+def s(x): return sum(int(d) for d in str(x))
+
+a,b,c=map(int,input().split())
+r=[]
+for i in range(1,82):
+    x=b*(i**a)+c
+    if 0<x<10**9 and s(x)==i:
+        r.append(x)
+r.sort()
+print(len(r))
+if r:print(*r)
