@@ -1,0 +1,29 @@
+import sys
+input = sys.stdin.readline
+MOD = 10**9 + 7
+N = 2*10**5 + 5
+fact = [1]*N
+invf = [1]*N
+for i in range(1, N):
+    fact[i] = fact[i-1]*i % MOD
+invf[N-1] = pow(fact[N-1], MOD-2, MOD)
+for i in range(N-2, -1, -1):
+    invf[i] = invf[i+1]*(i+1) % MOD
+
+def comb(n, k):
+    if k < 0 or k > n:
+        return 0
+    return fact[n]*invf[k]%MOD*invf[n-k]%MOD
+
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    ones = [i for i, val in enumerate(a) if val == 1]
+    res = 0
+    half = k//2
+    for idx in ones:
+        left = comb(idx, half)
+        right = comb(n-idx-1, half)
+        res = (res + left*right)%MOD
+    print(res)
