@@ -1,0 +1,22 @@
+t=int(input())
+for _ in range(t):
+    l,r,m=map(int,input().split())
+    for a in range(l,r+1):
+        n=(m-(r-l))//a
+        if n<=0: n=1
+        for k in range(-1,2):
+            x=n+k
+            if x<=0: continue
+            val=m-x*a
+            if - (r-l)<=val<=r-l:
+                if val>=0:
+                    b=l+val
+                    c=l
+                else:
+                    b=l
+                    c=l-val
+                print(a,b,c)
+                break
+        else:
+            continue
+        break
