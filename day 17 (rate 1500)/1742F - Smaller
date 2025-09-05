@@ -1,0 +1,25 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    q=int(input())
+    cnts=[0]*26
+    cntt=[0]*26
+    cnts[0]=1
+    cntt[0]=1
+    for __ in range(q):
+        d,k,x=input().split()
+        d=int(d);k=int(k)
+        for ch in x:
+            if d==1:
+                cnts[ord(ch)-97]+=k
+            else:
+                cntt[ord(ch)-97]+=k
+        if sum(cntt[1:])>0:
+            print("YES")
+        else:
+            if cnts[0]<cntt[0]:
+                print("YES")
+            else:
+                print("NO")
