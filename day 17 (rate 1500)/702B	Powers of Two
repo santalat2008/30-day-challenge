@@ -1,0 +1,14 @@
+from collections import Counter
+
+n = int(input())
+a = list(map(int, input().split()))
+c = Counter()
+ans = 0
+
+for v in a:
+    for p in range(31):
+        t = (1 << p) - v
+        ans += c[t]
+    c[v] += 1
+
+print(ans)
