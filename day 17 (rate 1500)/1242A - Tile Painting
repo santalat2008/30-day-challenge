@@ -1,0 +1,12 @@
+import math
+
+n=int(input())
+def f(n):
+    if n==1: return 1
+    for p in range(2,int(math.isqrt(n))+1):
+        if n%p==0:
+            while n%p==0:
+                n//=p
+            return n*p
+    return n
+print(f(n))
