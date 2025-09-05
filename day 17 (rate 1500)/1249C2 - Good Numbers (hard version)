@@ -1,0 +1,28 @@
+import sys
+input=sys.stdin.readline
+
+q=int(input())
+for _ in range(q):
+    n=int(input())
+    digs=[]
+    x=n
+    while x:
+        digs.append(x%3)
+        x//=3
+    digs.append(0)
+    for i in range(len(digs)):
+        if digs[i]>=2:
+            digs[i]=0
+            j=i+1
+            while digs[j]==2:
+                digs[j]=0
+                j+=1
+            digs[j]+=1
+            for k in range(i):
+                digs[k]=0
+    ans=0
+    p=1
+    for d in digs:
+        ans+=d*p
+        p*=3
+    print(ans)
