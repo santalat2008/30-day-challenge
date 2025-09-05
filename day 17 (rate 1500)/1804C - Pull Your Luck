@@ -1,0 +1,12 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n,x,p=map(int,input().split())
+    ok=False
+    for k in range(1,min(2*n,p)+1):
+        if (k*(k+1)//2 + x)%n==0:
+            ok=True
+            break
+    print("Yes" if ok else "No")
