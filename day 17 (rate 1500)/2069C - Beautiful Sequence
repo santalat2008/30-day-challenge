@@ -1,0 +1,13 @@
+mod=998244353
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    c1=a.count(1)
+    c2=a.count(2)
+    c3=a.count(3)
+    if c1==0 or c3==0:
+        print(0)
+        continue
+    ans=(pow(2,c2,mod)-1)*c1%mod*c3%mod
+    print(ans)
