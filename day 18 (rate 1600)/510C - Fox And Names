@@ -1,0 +1,41 @@
+from collections import deque
+
+n=int(input())
+a=[input().strip() for _ in range(n)]
+g=[[] for _ in range(26)]
+ind=[0]*26
+
+ok=True
+for i in range(n-1):
+    s,t=a[i],a[i+1]
+    mn=min(len(s),len(t))
+    found=False
+    for j in range(mn):
+        if s[j]!=t[j]:
+            u,v=ord(s[j])-97,ord(t[j])-97
+            g[u].append(v)
+            ind[v]+=1
+            found=True
+            break
+    if not found and len(s)>len(t):
+        ok=False
+
+if not ok:
+    print("Impossible")
+else:
+    q=deque()
+    for i in range(26):
+        if ind[i]==0:
+            q.append(i)
+    res=""
+    while q:
+        u=q.popleft()
+        res+=chr(u+97)
+        for v in g[u]:
+            ind[v]-=1
+            if ind[v]==0:
+                q.append(v)
+    if len(res)<26:
+        print("Impossible")
+    else:
+        print(res)
