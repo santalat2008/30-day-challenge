@@ -1,0 +1,17 @@
+import math
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    g = 0
+    for i in range(n - 1):
+        g = math.gcd(g, abs(a[i+1] - a[i]))
+    ans = 0
+    for k in range(1, int(g**0.5) + 1):
+        if g % k == 0:
+            if k <= n:
+                ans += 1
+            if g // k != k and g // k <= n:
+                ans += 1
+    print(ans if g else len([i for i in range(1, n+1) if n % i == 0]))
