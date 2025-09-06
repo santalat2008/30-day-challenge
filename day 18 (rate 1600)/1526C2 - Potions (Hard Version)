@@ -1,0 +1,12 @@
+import heapq
+
+n=int(input())
+a=list(map(int,input().split()))
+h=0
+pq=[]
+for x in a:
+    h+=x
+    heapq.heappush(pq,x)
+    if h<0:
+        h-=heapq.heappop(pq)
+print(len(pq))
