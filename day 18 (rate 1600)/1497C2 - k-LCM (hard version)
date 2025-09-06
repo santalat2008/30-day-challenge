@@ -1,0 +1,11 @@
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    r = n - (k - 3)
+    if r % 2 == 1:
+        print(1, r // 2, r // 2, *( [1] * (k - 3) ))
+    else:
+        if r % 4 == 0:
+            print(r // 2, r // 4, r // 4, *( [1] * (k - 3) ))
+        else:
+            print(2, (r - 2) // 2, (r - 2) // 2, *( [1] * (k - 3) ))
