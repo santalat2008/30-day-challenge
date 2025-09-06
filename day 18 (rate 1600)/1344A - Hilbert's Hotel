@@ -1,0 +1,13 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    seen = set()
+    ok = True
+    for i in range(n):
+        pos = (i + a[i]) % n
+        if pos in seen:
+            ok = False
+            break
+        seen.add(pos)
+    print("YES" if ok else "NO")
