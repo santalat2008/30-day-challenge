@@ -1,0 +1,18 @@
+def ok(x,nb,ns,nc,pb,ps,pc,r,rb,rs,rc):
+    b=max(0,rb*x-nb)
+    s=max(0,rs*x-ns)
+    c=max(0,rc*x-nc)
+    return b*pb+s*ps+c*pc<=r
+
+s=input().strip()
+rb,rs,rc=s.count('B'),s.count('S'),s.count('C')
+nb,ns,nc=map(int,input().split())
+pb,ps,pc=map(int,input().split())
+r=int(input())
+
+l,h=0,10**13
+while l<h:
+    m=(l+h+1)//2
+    if ok(m,nb,ns,nc,pb,ps,pc,r,rb,rs,rc): l=m
+    else: h=m-1
+print(l)
