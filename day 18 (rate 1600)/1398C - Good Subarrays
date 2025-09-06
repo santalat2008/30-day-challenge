@@ -1,0 +1,13 @@
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    s=input().strip()
+    ps=0
+    d={0:1}
+    ans=0
+    for i in range(n):
+        ps+=int(s[i])
+        key=ps-(i+1)
+        ans+=d.get(key,0)
+        d[key]=d.get(key,0)+1
+    print(ans)
