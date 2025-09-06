@@ -1,0 +1,15 @@
+t = int(input())
+for _ in range(t):
+    n, k, z = map(int, input().split())
+    a = list(map(int, input().split()))
+    p = [0] * (n + 1)
+    for i in range(n):
+        p[i + 1] = p[i] + a[i]
+    ans = 0
+    mx = 0
+    for i in range(k + 1):
+        if i < n - 1:
+            mx = max(mx, a[i] + a[i + 1])
+        l = min(z, (k - i) // 2)
+        ans = max(ans, p[i + 1] + l * mx)
+    print(ans)
