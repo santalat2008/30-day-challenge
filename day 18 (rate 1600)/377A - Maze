@@ -1,0 +1,27 @@
+n,m,k=map(int,input().split())
+g=[list(input().strip()) for _ in range(n)]
+
+vis=[[0]*m for _ in range(n)]
+cells=[]
+def dfs(x,y):
+    vis[x][y]=1
+    cells.append((x,y))
+    for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)]:
+        nx,ny=x+dx,y+dy
+        if 0<=nx<n and 0<=ny<m and not vis[nx][ny] and g[nx][ny]=='.':
+            dfs(nx,ny)
+
+done=0
+for i in range(n):
+    for j in range(m):
+        if g[i][j]=='.':
+            dfs(i,j)
+            done=1
+            break
+    if done: break
+
+for x,y in cells[-k:]:
+    g[x][y]='X'
+
+for row in g:
+    print("".join(row))
