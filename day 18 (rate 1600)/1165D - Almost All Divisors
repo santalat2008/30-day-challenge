@@ -1,0 +1,18 @@
+import math
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    d = sorted(list(map(int, input().split())))
+    x = d[0] * d[-1]
+    ok = True
+    divs = []
+    for i in range(2, int(math.isqrt(x)) + 1):
+        if x % i == 0:
+            divs.append(i)
+            if i != x // i:
+                divs.append(x // i)
+    divs.sort()
+    if divs != d:
+        ok = False
+    print(x if ok else -1)
