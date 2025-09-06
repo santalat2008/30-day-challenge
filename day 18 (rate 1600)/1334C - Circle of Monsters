@@ -1,0 +1,13 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    ab = [tuple(map(int, input().split())) for _ in range(n)]
+    dmg = 0
+    mn = 10**18
+    for i in range(n):
+        a, b = ab[i]
+        na, _ = ab[(i + 1) % n]
+        need = max(0, na - b)
+        dmg += need
+        mn = min(mn, a - need)
+    print(dmg + mn)
