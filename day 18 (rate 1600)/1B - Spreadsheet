@@ -1,0 +1,26 @@
+def toRC(s):
+    i=0
+    while i<len(s) and s[i].isalpha(): i+=1
+    col,row=s[:i],s[i:]
+    r=int(row)
+    c=0
+    for ch in col:
+        c=c*26+ord(ch)-64
+    return f"R{r}C{c}"
+
+def toAZ(s):
+    r,c=map(int,s[1:].split('C'))
+    col=""
+    while c:
+        c-=1
+        col=chr(c%26+65)+col
+        c//=26
+    return f"{col}{r}"
+
+n=int(input())
+for _ in range(n):
+    s=input().strip()
+    if s[0]=='R' and 'C' in s[1:] and s[1].isdigit():
+        print(toAZ(s))
+    else:
+        print(toRC(s))
