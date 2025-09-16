@@ -1,0 +1,15 @@
+import sys
+input=sys.stdin.readline
+M=10**9+7
+
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    ans=0
+    x=1
+    y=1
+    while y<=n:
+        x+=1
+        y*=x
+        ans=(ans+(min(n,y)-y//x)*(x))%M
+    print(ans)
