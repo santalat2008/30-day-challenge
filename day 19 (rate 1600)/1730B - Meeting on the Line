@@ -1,0 +1,14 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    x=list(map(int,input().split()))
+    t=list(map(int,input().split()))
+    L=-10**18
+    R=10**18
+    for i in range(n):
+        L=max(L,x[i]-t[i])
+        R=min(R,x[i]+t[i])
+    print((L+R)/2)
