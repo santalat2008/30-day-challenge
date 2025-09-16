@@ -1,0 +1,21 @@
+import sys,math,bisect
+input=sys.stdin.readline
+
+a,b=map(int,input().split())
+g=math.gcd(a,b)
+d=[]
+i=1
+while i*i<=g:
+    if g%i==0:
+        d.append(i)
+        if i*i!=g: d.append(g//i)
+    i+=1
+d.sort()
+n=int(input())
+for _ in range(n):
+    l,h=map(int,input().split())
+    idx=bisect.bisect_right(d,h)-1
+    if idx>=0 and d[idx]>=l:
+        print(d[idx])
+    else:
+        print(-1)
