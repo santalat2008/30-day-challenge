@@ -1,0 +1,12 @@
+import sys
+M=10**9+7
+n,m=map(int,sys.stdin.readline().split())
+c=[[0]*(n+1) for _ in range(n+1)]
+for i in range(n+1):
+    c[i][0]=c[i][i]=1
+    for j in range(1,i):
+        c[i][j]=(c[i-1][j-1]+c[i-1][j])%M
+ans=0
+for x in range(1,n+1):
+    ans=(ans+c[n][x]*c[x+m-1][m]%M*c[n-x+m][m]%M)%M
+print(ans)
