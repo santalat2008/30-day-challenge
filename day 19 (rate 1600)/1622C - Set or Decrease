@@ -1,0 +1,20 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    a.sort()
+    s=sum(a)
+    if s<=k:
+        print(0)
+        continue
+    ans=s-k
+    pref=0
+    for i in range(n-1,0,-1):
+        pref+=a[i]
+        need=s-pref
+        x=(need-k+a[0]+n-i-1)//(n-i)
+        ans=min(ans,x+n-i-1)
+    print(ans)
