@@ -1,0 +1,5 @@
+n = int(input())
+a = list(map(int, input().split()))
+mx = max(a)
+s = sum(a)
+print(max(mx, (s + n - 2) // (n - 1)))
