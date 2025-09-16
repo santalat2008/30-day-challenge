@@ -1,0 +1,16 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n,q=map(int,input().split())
+    a=list(map(int,input().split()))
+    res=['0']*n
+    cur=q
+    for i in range(n-1,-1,-1):
+        if a[i]<=cur:
+            res[i]='1'
+        elif cur>0:
+            res[i]='1'
+            cur-=1
+    print(''.join(res))
