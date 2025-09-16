@@ -1,0 +1,22 @@
+import sys
+input=sys.stdin.readline
+
+n,k=map(int,input().split())
+ab,ao,bo=[],[],[]
+for _ in range(n):
+    t,a,b=map(int,input().split())
+    if a and b: ab.append(t)
+    elif a: ao.append(t)
+    elif b: bo.append(t)
+ab.sort(); ao.sort(); bo.sort()
+if len(ab)+min(len(ao),len(bo))<k:
+    print(-1)
+    sys.exit()
+res=[]
+i=j=0
+while i<len(ao) and j<len(bo):
+    res.append(ao[i]+bo[j])
+    i+=1; j+=1
+res+=ab
+res.sort()
+print(sum(res[:k]))
