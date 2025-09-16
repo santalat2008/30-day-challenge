@@ -1,0 +1,18 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    b=list(map(int,input().split()))
+    ok=[0]*(n+1)
+    ok[0]=1
+    for i in range(n):
+        if not ok[i]:
+            continue
+        x=b[i]
+        if i+x<=n:
+            ok[i+x]=1
+        if i-x+1>=0:
+            ok[i-x+1]=1
+    print("YES" if ok[n] else "NO")
