@@ -1,0 +1,4 @@
+n,x=map(int,input().split())
+a=list(map(int,input().split()))
+mx=max(a)
+print("Yes" if mx<x else "No")
