@@ -1,0 +1,34 @@
+import sys
+inp=sys.stdin.readline
+
+def f(s,p):
+    n=len(s)
+    v=[s]
+    while len(v[-1])>1:
+        c=v[-1]
+        i=0
+        while i+1<len(c) and c[i]<=c[i+1]:
+            i+=1
+        v.append(c[:i]+c[i+1:])
+    ps=[0]
+    for x in v: ps.append(ps[-1]+len(x))
+    l,h=0,len(v)
+    while l<h:
+        m=(l+h)//2
+        if ps[m]<p:l=m+1
+        else:h=m
+    i=l-1
+    o=p-ps[i]-1
+    return v[i][o]
+
+def main():
+    t=int(inp())
+    r=[]
+    for _ in range(t):
+        s=inp().strip()
+        p=int(inp())
+        r.append(f(s,p))
+    print(''.join(r))
+
+if __name__=="__main__":
+    main()
