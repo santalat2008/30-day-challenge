@@ -1,0 +1,22 @@
+import sys
+inp=sys.stdin.readline
+
+def main():
+    n,m=map(int,inp().split())
+    s=inp().strip()
+    p=["abc","acb","bac","bca","cab","cba"]
+    pref=[[0]*(n+1) for _ in range(6)]
+    for i in range(6):
+        for j in range(n):
+            pref[i][j+1]=pref[i][j]+(s[j]!=p[i][j%3])
+    out=[]
+    for _ in range(m):
+        l,r=map(int,inp().split())
+        ans=n
+        for i in range(6):
+            ans=min(ans,pref[i][r]-pref[i][l-1])
+        out.append(str(ans))
+    sys.stdout.write('\n'.join(out))
+
+if __name__=="__main__":
+    main()
