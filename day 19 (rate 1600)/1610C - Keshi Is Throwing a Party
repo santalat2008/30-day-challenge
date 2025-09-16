@@ -1,0 +1,14 @@
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    ab=[tuple(map(int,input().split())) for _ in range(n)]
+    l,r=1,n
+    while l<=r:
+        m=(l+r)//2
+        c=0
+        for i,(a,b) in enumerate(ab):
+            if a>=m-1-c and b>=c:
+                c+=1
+        if c>=m: l=m+1
+        else: r=m-1
+    print(r)
