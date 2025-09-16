@@ -1,0 +1,44 @@
+import sys
+inp=sys.stdin.readline
+
+def solve(n,s):
+    if s[0]!='1' or s[-1]!='1' or s.count('0')%2==1:
+        return "NO",
+    a=[];b=[]
+    c1=s.count('1')//2
+    c0=0
+    for ch in s:
+        if ch=='1':
+            if c1>0:
+                a.append('(');b.append('(')
+                c1-=1
+            else:
+                a.append(')');b.append(')')
+        else:
+            if c0%2==0:
+                a.append('(');b.append(')')
+            else:
+                a.append(')');b.append('(')
+            c0+=1
+    A=''.join(a);B=''.join(b)
+    st=0
+    for ch in A:
+        st+=1 if ch=='(' else -1
+        if st<0:return "NO",
+    st=0
+    for ch in B:
+        st+=1 if ch=='(' else -1
+        if st<0:return "NO",
+    return "YES",A,B
+
+def main():
+    t=int(inp())
+    out=[]
+    for _ in range(t):
+        n=int(inp());s=inp().strip()
+        res=solve(n,s)
+        out.extend(res)
+    sys.stdout.write('\n'.join(out))
+
+if __name__=="__main__":
+    main()
