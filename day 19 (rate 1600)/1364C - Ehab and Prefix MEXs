@@ -1,0 +1,17 @@
+n=int(input())
+a=list(map(int,input().split()))
+b=[]
+cur=0
+ok=1
+for i in range(n):
+    if i==0:
+        if a[i]>0: ok=0;break
+        b.append(1)
+    else:
+        if a[i]>a[i-1]:
+            if a[i]==i+1: b.append(cur);cur+=1
+            else: b.append(a[i-1])
+        else:
+            b.append(10**6)
+if ok: print(*b)
+else: print(-1)
