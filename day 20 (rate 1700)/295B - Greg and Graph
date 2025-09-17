@@ -1,0 +1,21 @@
+n=int(input())
+a=[list(map(int,input().split())) for _ in range(n)]
+x=list(map(int,input().split()))
+x=[v-1 for v in x]
+ans=[0]*n
+d=[[a[i][j] for j in range(n)] for i in range(n)]
+use=[0]*n
+for k in range(n-1,-1,-1):
+    v=x[k]
+    use[v]=1
+    for i in range(n):
+        for j in range(n):
+            d[i][j]=min(d[i][j],d[i][v]+d[v][j])
+    s=0
+    for i in range(n):
+        if use[i]:
+            for j in range(n):
+                if use[j]:
+                    s+=d[i][j]
+    ans[k]=s
+print(*ans)
