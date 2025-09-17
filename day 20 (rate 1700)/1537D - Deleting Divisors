@@ -1,0 +1,9 @@
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    if n%2==1: print("Bob")
+    else:
+        m=n
+        while m%2==0: m//=2
+        if m==1: print("Bob")
+        else: print("Alice")
