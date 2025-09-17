@@ -1,0 +1,7 @@
+l,r=map(int,input().split())
+x=l^r
+y=1
+while x:
+    y<<=1
+    x>>=1
+print(y-1)
