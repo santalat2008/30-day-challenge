@@ -1,0 +1,13 @@
+n=int(input())
+a=list(map(int,input().split()))
+s=sum(a)
+if s%3!=0:print(0);exit()
+p=s//3
+c=0
+w=0
+t=0
+for i in range(n-1):
+    t+=a[i]
+    if t==2*p:w+=c
+    if t==p:c+=1
+print(w)
