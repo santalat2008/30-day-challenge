@@ -1,0 +1,22 @@
+n=int(input())
+a=list(map(int,input().split()))
+d={}
+p={}
+for i,v in enumerate(a):
+    if v-1 in d:
+        l,j=d[v-1]
+        d[v]=(l+1,i)
+        p[i]=j
+    else:
+        d[v]=(1,i)
+        p[i]=-1
+m,l=0,0
+for v in d.values():
+    if v[0]>m:m,l=v
+r=[]
+while l!=-1:
+    r.append(l+1)
+    l=p[l]
+r.reverse()
+print(m)
+print(*r)
