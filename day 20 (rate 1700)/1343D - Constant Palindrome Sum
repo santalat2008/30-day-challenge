@@ -1,0 +1,23 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n,k=map(int,input().split())
+    a=list(map(int,input().split()))
+    cnt=[0]*(2*k+2)
+    pre=[0]*(2*k+3)
+    for i in range(n//2):
+        x,y=a[i],a[n-1-i]
+        cnt[x+y]+=1
+        pre[min(x,y)+1]+=1
+        pre[max(x,y)+k+1]-=1
+    for i in range(1,2*k+3):
+        pre[i]+=pre[i-1]
+    ans=10**9
+    for s in range(2,2*k+1):
+        c1=cnt[s]
+        c2=pre[s]-c1
+        c3=n//2-c1-c2
+        ans=min(ans,c2+2*c3)
+    print(ans)
