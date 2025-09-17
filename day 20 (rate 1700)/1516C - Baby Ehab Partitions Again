@@ -1,0 +1,26 @@
+n=int(input())
+a=list(map(int,input().split()))
+s=sum(a)
+if s%2==1:
+    print(0)
+    exit()
+dp=[0]*(s+1)
+dp[0]=1
+for x in a:
+    for j in range(s,x-1,-1):
+        dp[j]|=dp[j-x]
+if not dp[s//2]:
+    print(0)
+    exit()
+for i in range(n):
+    if a[i]%2==1:
+        print(1)
+        print(i+1)
+        exit()
+while True:
+    for i in range(n):
+        if a[i]%2==1:
+            print(1)
+            print(i+1)
+            exit()
+    for i in range(n): a[i]//=2
