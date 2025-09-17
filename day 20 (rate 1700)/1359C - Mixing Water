@@ -1,0 +1,13 @@
+t=int(input())
+for _ in range(t):
+    h,c,tg=map(int,input().split())
+    if tg*2<=h+c:
+        print(2)
+        continue
+    k=(h-c)//(2*(tg-(h+c)//2))
+    def f(k):
+        return abs(((k+1)*h+k*c)/(2*k+1)-tg)
+    a=f(k)
+    b=f(k+1)
+    if a<=b:print(2*k+1)
+    else:print(2*k+3)
