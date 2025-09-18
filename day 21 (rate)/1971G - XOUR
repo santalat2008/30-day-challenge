@@ -1,0 +1,30 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    g=[[] for _ in range(n)]
+    for i in range(n):
+        for j in range(i+1,n):
+            if a[i]^a[j]<4:
+                g[i].append(j)
+                g[j].append(i)
+    vis=[0]*n
+    ans=a[:]
+    for i in range(n):
+        if not vis[i]:
+            st=[i]; comp=[]
+            vis[i]=1
+            while st:
+                u=st.pop()
+                comp.append(u)
+                for v in g[u]:
+                    if not vis[v]:
+                        vis[v]=1
+                        st.append(v)
+            vals=sorted(a[x] for x in comp)
+            for idx,v in zip(sorted(comp),vals):
+                ans[idx]=v
+    print(*ans)
