@@ -1,0 +1,16 @@
+n,l,k=map(int,input().split())
+d=list(map(int,input().split()))
+a=list(map(int,input().split()))
+d.append(l)
+dp=[[float('inf')]*(k+1) for _ in range(n)]
+dp[0][0]=a[0]*(d[1]-d[0])
+for i in range(1,n):
+    for j in range(k+1):
+        for t in range(i):
+            rem=i-t-1
+            if rem>j:continue
+            cost=a[t]*(d[i+1]-d[t])
+            dp[i][j]=min(dp[i][j],dp[t][j-rem-0]+cost if t>0 else cost)
+res=min(dp[n-1])
+print(res)
+ 
