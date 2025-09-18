@@ -1,0 +1,30 @@
+import sys
+input=sys.stdin.readline
+
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    a=list(input().strip())
+    b=list(input().strip())
+    ok=True
+    for i in range(n):
+        if a[i]>b[i]:
+            ok=False
+            break
+    if not ok:
+        print(-1)
+        continue
+    ans=0
+    for c in range(20):
+        x=chr(ord('a')+c)
+        mx=None
+        for i in range(n):
+            if a[i]==x and a[i]!=b[i]:
+                if mx is None: mx=b[i]
+                mx=min(mx,b[i])
+        if mx is not None:
+            ans+=1
+            for i in range(n):
+                if a[i]==x and b[i]>=mx:
+                    a[i]=mx
+    print(ans)
