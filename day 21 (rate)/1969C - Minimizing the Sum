@@ -1,0 +1,23 @@
+import sys
+input = sys.stdin.readline
+
+INF = 10**18
+
+t = int(input())
+for _ in range(t):
+    n, k = map(int, input().split())
+    a = list(map(int, input().split()))
+
+    dp = [[INF] * (k + 1) for _ in range(n + 1)]
+    dp[0][0] = 0
+
+    for i in range(n):
+        for j in range(k + 1):
+            mn = INF
+            d = 0
+            while j + d <= k and i + d < n:
+                mn = min(mn, a[i + d])
+                dp[i + d + 1][j + d] = min(dp[i + d + 1][j + d], dp[i][j] + (d + 1) * mn)
+                d += 1
+
+    print(min(dp[n]))
