@@ -1,0 +1,9 @@
+def canon(s):
+    if len(s)%2:
+        return s
+    mid=len(s)//2
+    l,r=canon(s[:mid]),canon(s[mid:])
+    return min(l+r,r+l)
+a=input()
+b=input()
+print("YES" if canon(a)==canon(b) else "NO")
