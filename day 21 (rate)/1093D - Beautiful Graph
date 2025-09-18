@@ -1,0 +1,50 @@
+import sys
+sys.setrecursionlimit(10**6)
+input = sys.stdin.readline
+
+MOD = 998244353
+N = 3 * 10**5 + 999
+
+p2 = [1] * N
+for i in range(1, N):
+    p2[i] = (2 * p2[i - 1]) % MOD
+
+def dfs(v, c, g, col, cnt):
+    global bad
+    col[v] = c
+    cnt[c] += 1
+    for to in g[v]:
+        if col[to] == -1:
+            dfs(to, 1 - c, g, col, cnt)
+        if (col[v] ^ col[to]) == 0:
+            bad = True
+
+tc = int(input())
+for _ in range(tc):
+    n, m = map(int, input().split())
+    g = [[] for _ in range(n)]
+    for _ in range(m):
+        u, v = map(int, input().split())
+        u -= 1
+        v -= 1
+        g[u].append(v)
+        g[v].append(u)
+
+    col = [-1] * n
+    res = 1
+    bad = False
+
+    for i in range(n):
+        if col[i] != -1:
+            continue
+        cnt = [0, 0]
+        bad = False
+        dfs(i, 0, g, col, cnt)
+        if bad:
+            print(0)
+            break
+        cur = (p2[cnt[0]] + p2[cnt[1]]) % MOD
+        res = (res * cur) % MOD
+
+    if not bad:
+        print(res)
