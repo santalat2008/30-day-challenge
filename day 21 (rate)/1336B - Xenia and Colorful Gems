@@ -1,0 +1,22 @@
+import sys,bisect
+t=int(sys.stdin.readline())
+for _ in range(t):
+    nr,ng,nb=map(int,sys.stdin.readline().split())
+    r=sorted(map(int,sys.stdin.readline().split()))
+    g=sorted(map(int,sys.stdin.readline().split()))
+    b=sorted(map(int,sys.stdin.readline().split()))
+    ans=10**20
+    for a1,a2,a3 in [(r,g,b),(r,b,g),(g,r,b),(g,b,r),(b,r,g),(b,g,r)]:
+        for x in a1:
+            i=bisect.bisect_left(a2,x)
+            j=bisect.bisect_left(a3,x)
+            for ii in [i-1,i]:
+                if 0<=ii<len(a2):
+                    y=a2[ii]
+                    for jj in [j-1,j]:
+                        if 0<=jj<len(a3):
+                            z=a3[jj]
+                            val=(x-y)**2+(y-z)**2+(z-x)**2
+                            if val<ans:
+                                ans=val
+    print(ans)
