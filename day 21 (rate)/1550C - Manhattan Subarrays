@@ -1,0 +1,28 @@
+import sys
+input = sys.stdin.readline
+
+def d(a, b):
+    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+def solve(n, a):
+    ans = 0
+    for i in range(n):
+        for j in range(i, n):
+            if i + 2 <= j:
+                ok = True
+                for i1 in range(i, j):
+                    for i2 in range(i1 + 1, j):
+                        if d((a[i1], i1), (a[j], j)) == d((a[i1], i1), (a[i2], i2)) + d((a[i2], i2), (a[j], j)):
+                            ok = False
+                    if not ok:
+                        break
+                if not ok:
+                    break
+            ans += 1
+    print(ans)
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    solve(n, a)
