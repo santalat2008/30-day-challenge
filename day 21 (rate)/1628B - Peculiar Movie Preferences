@@ -1,0 +1,18 @@
+t=int(input())
+for _ in range(t):
+    n=int(input())
+    s=[input() for _ in range(n)]
+    st=set()
+    ans="NO"
+    for x in s:
+        if x==x[::-1]:
+            ans="YES"
+            break
+        if x[::-1] in st:
+            ans="YES"
+            break
+        if len(x)==3 and x[::-1][:2] in st:
+            ans="YES"
+            break
+        st.add(x)
+    print(ans)
