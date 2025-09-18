@@ -1,0 +1,18 @@
+import sys
+input=sys.stdin.readline
+t=int(input())
+lim=2*10**5
+sq=set(i*i for i in range(1,int(lim**0.5)+2))
+for _ in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    p=[0]
+    for x in a: p.append(p[-1]^x)
+    d={}
+    d[0]=1
+    ans=0
+    for x in p[1:]:
+        ans+=sum(d.get(x^y,0) for y in sq if (x^y)<=lim)
+        d[x]=d.get(x,0)+1
+    tot=n*(n+1)//2
+    print(tot-ans)
