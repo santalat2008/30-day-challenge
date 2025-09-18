@@ -1,0 +1,17 @@
+n,p=map(int,input().split())
+s=input()
+p=min(p-1,n-p)
+s=list(s)
+res=0
+l,r=0,0
+for i in range(n//2):
+    j=n-1-i
+    if s[i]!=s[j]:
+        a=abs(ord(s[i])-ord(s[j]))
+        res+=min(a,26-a)
+        l=i if l==0 else l
+        r=i
+if res==0:
+    print(0)
+else:
+    print(res + min(abs(p-l)+abs(r-l), abs(p-r)+abs(r-l)))
