@@ -1,0 +1,18 @@
+t=int(input())
+for _ in range(t):
+    p,f=map(int,input().split())
+    cs,cw=map(int,input().split())
+    s,w=map(int,input().split())
+    if s>w:
+        s,w= w,s
+        cs,cw= cw,cs
+    ans=0
+    for i in range(min(p//s,cs)+1):
+        remp=p-i*s
+        takew=min(cw,remp//w)
+        for j in range(min(f//s,cs-i)+1):
+            remf=f-j*s
+            takew2=min(cw-takew,remf//w)
+            ans=max(ans,i+takew+j+takew2)
+    print(ans)
+  
