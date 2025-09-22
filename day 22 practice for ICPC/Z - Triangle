@@ -1,0 +1,16 @@
+def ok(x1,y1,x2,y2,x3,y3):
+    v1=(x2-x1,y2-y1)
+    v2=(x3-x1,y3-y1)
+    return v1[0]*v2[0]+v1[1]*v2[1]==0
+
+x1,y1,x2,y2,x3,y3=map(int,input().split())
+if ok(x1,y1,x2,y2,x3,y3) or ok(x2,y2,x1,y1,x3,y3) or ok(x3,y3,x1,y1,x2,y2):
+    print("RIGHT")
+else:
+    d=[(1,0),(-1,0),(0,1),(0,-1)]
+    f=0
+    for dx,dy in d:
+        if ok(x1+dx,y1+dy,x2,y2,x3,y3) or ok(x2+dx,y2+dy,x1,y1,x3,y3) or ok(x3+dx,y3+dy,x1,y1,x2,y2):
+            f=1
+            break
+    print("ALMOST" if f else "NEITHER")
