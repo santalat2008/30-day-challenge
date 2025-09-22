@@ -1,0 +1,11 @@
+n = int(input())
+a = list(map(int, input().split()))
+s = set()
+mx = n
+for x in a:
+    s.add(x)
+    while mx in s:
+        print(mx, end=" ")
+        s.remove(mx)
+        mx -= 1
+    print()
