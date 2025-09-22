@@ -1,0 +1,8 @@
+import math
+L, s1, s2 = map(int, input().split())
+q = int(input())
+for _ in range(q):
+    x = int(input())
+    d = math.sqrt(2) * (L - math.sqrt(x))
+    v = abs(s1 - s2)
+    print(d / v)
