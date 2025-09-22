@@ -1,0 +1,2 @@
+c = input().strip()
+print(chr((ord(c) - 97 + 1) % 26 + 97))
