@@ -1,0 +1,3 @@
+x, p = map(float, input().split())
+ans = p / (1 - x / 100)
+print(f"{ans:.2f}")
