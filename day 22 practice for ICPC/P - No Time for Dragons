@@ -1,0 +1,9 @@
+n=int(input())
+d=[tuple(map(int,input().split())) for _ in range(n)]
+d.sort(key=lambda x:x[0]-x[1])
+s=0
+m=0
+for a,b in d:
+    if s<a:m+=a-s;s=a
+    s-=b
+print(m)
