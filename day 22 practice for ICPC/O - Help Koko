@@ -1,0 +1,20 @@
+def is_p(x):
+    if x<2:return 0
+    if x%2==0:return x==2
+    i=3
+    while i*i<=x:
+        if x%i==0:return 0
+        i+=2
+    return 1
+
+n,x=map(int,input().split())
+a=list(map(int,input().split()))
+o=list(map(int,input().split()))
+r=[]
+for i in range(n):
+    if o[i]==1:
+        if not is_p(a[i]):r.append(-1)
+        else:r.append(pow(5,x,10)*pow(3,x,10)*a[i]%10)
+    else:
+        r.append(pow(2,x,10)*pow(5,x,10)*a[i]%10)
+print(*r)
