@@ -1,0 +1,10 @@
+n, k, a = map(int, input().split())
+val = n * k
+if val % a == 0:
+    res = val // a
+    if -2147483648 <= res <= 2147483647:
+        print("int")
+    else:
+        print("long long")
+else:
+    print("double")
