@@ -1,0 +1,12 @@
+a, b, c, d = map(int, input().split())
+ok = False
+if a + b + c == d: ok = True
+if a + b - c == d: ok = True
+if a - b + c == d: ok = True
+if -a + b + c == d: ok = True
+if a * b + c == d: ok = True
+if a + b * c == d: ok = True
+if a * b - c == d: ok = True
+if a - b * c == d: ok = True
+if a * b * c == d: ok = True
+print("YES" if ok else "NO")
