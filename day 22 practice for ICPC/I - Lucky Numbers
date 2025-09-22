@@ -1,0 +1,6 @@
+n = int(input())
+a, b = divmod(n, 10)
+if a != 0 and b % a == 0 or b != 0 and a % b == 0:
+    print("YES")
+else:
+    print("NO")
