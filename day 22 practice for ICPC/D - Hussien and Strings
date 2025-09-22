@@ -1,0 +1,9 @@
+a, b = input().split()
+if len(a) != len(b):
+    print("NO")
+else:
+    diff = [(x, y) for x, y in zip(a, b) if x != y]
+    if len(diff) == 2 and diff[0] == diff[1][::-1]:
+        print("YES")
+    else:
+        print("NO")
