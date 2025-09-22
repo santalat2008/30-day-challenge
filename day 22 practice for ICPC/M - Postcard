@@ -1,0 +1,36 @@
+s = input().strip()
+k = int(input())
+
+r = []
+n = len(s)
+l = sum(1 for i in range(n) if s[i].isalpha())
+q = s.count('?')
+st = s.count('*')
+
+mn = l - q - st
+mx = float('inf') if st else l
+
+if not (mn <= k <= mx):
+    print("Impossible")
+    exit()
+
+d = k - l
+i = 0
+while i < n:
+    if s[i].isalpha():
+        if i+1 < n and (s[i+1] in '?*'):
+            if d > 0 and s[i+1] == '*':
+                r.append(s[i]*(d+1))
+                d = 0
+            elif d < 0:
+                d += 1
+            else:
+                r.append(s[i])
+            i += 2
+        else:
+            r.append(s[i])
+            i += 1
+    else:
+        i += 1
+
+print("".join(r))
