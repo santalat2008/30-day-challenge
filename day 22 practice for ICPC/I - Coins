@@ -1,0 +1,10 @@
+r=[input().strip() for _ in range(3)]
+cnt={"A":0,"B":0,"C":0}
+for x in r:
+    if x[1]==">": cnt[x[0]]+=1
+    else: cnt[x[2]]+=1
+s=sorted(cnt.items(),key=lambda x:x[1])
+if [c for _,c in s]==[0,1,2]:
+    print("".join([x for x,_ in s]))
+else:
+    print("Impossible")
